@@ -1,0 +1,60 @@
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer">
+</script>
+
+<script>
+  const sliders = ["#image1", "#image2", "#image3", "#image4", "#image5"];
+  let sliderAtual = 0;
+  let sliderMaximo = 4;
+  const time = 10000;
+
+  $(document).ready(() => {
+    $(sliders[sliderAtual]).fadeTo(0, 1);
+    setInterval(changeSliders, time);
+
+    function changeSliders() {
+      $(sliders[sliderAtual]).fadeTo(1000, 1);
+      sliderAtual++;
+      if (sliderAtual > sliderMaximo) {
+        sliderAtual = 0;
+      }
+      $(sliders[sliderAtual]).fadeTo(1000, 1);
+    }
+  });
+</script>
+
+<img
+  id="image1"
+  class="img1"
+  src="assets-slider-img/image-slider1.jpg"
+  alt="image-slider" />
+<img
+  id="image2"
+  class="img2"
+  src="assets-slider-img/image-slider2.jpg"
+  alt="image-slider" />
+<img
+  id="image3"
+  class="img3"
+  src="assets-slider-img/image-slider3.jpg"
+  alt="image-slider" />
+<img
+  id="image4"
+  class="img4"
+  src="assets-slider-img/image-slider4.jpg"
+  alt="image-slider" />
+<img
+  id="image5"
+  class="img5"
+  src="assets-slider-img/image-slider5.jpg"
+  alt="image-slider" />
+
+<!-- HTML bolinhas que trocam os slides -->
+<!-- <div class="containerSliderBox">
+  <div class="sliderBox"></div>
+  <div class="sliderBox"></div>
+  <div class="sliderBox"></div>
+</div> -->
