@@ -167,9 +167,9 @@ input[type="password"] {
   border-radius: 10px;
   cursor: pointer;
   border: 0;
-  visibility: hidden /* - vai criar os menus do tipo drop*/
+  visibility: hidden; /* - vai criar os menus do tipo drop*/
 }
-.menu-drop a{
+.menu-drop a {
   display: block;
   text-decoration: none;
   color: #000;
@@ -178,7 +178,12 @@ input[type="password"] {
   font-size: 10px;
   text-transform: uppercase;
 }
-.menu-drop a:hover{
-    color: #fff;
-    font-weight: bold;
+.menu-drop a:hover {
+  color: #fff;
+  font-weight: bold;
+}
+.f-nome-colaborador input {
+  display: block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }

@@ -3,3 +3,5 @@ Para fazer consulta em um banco de dados, segue-se o passo a passo:
 1 -  CONECTAR AO BANCO DE dados
 2 -  REALIZAR UMA ROTINA DE PESQUISA
 3 -  FECHAR A CONEXÃO COM O BANCO DE dados
+
+4 - Arrumar o script de menu drop no jquery

@@ -1,3 +1,25 @@
+<!-- 
+Script para validar a página de gerenciamento, 
+uma vez que o meu sistema permite o acesso na página sem fazer o devido 
+login ou simplismente digitando o endereço da página de gerenciamento, o que não faz sentido nenhum haja visto que temos o login justamente para isso. A ideia aqui é permitir acesso a página de gerenciamento somente depois de ter sido feito o login.
+-->
+<?php
+    session_start();
+    
+    if (isset($_SESSION['numlogin'])) {
+        $n1 = $_GET['num'];
+        $n2 = $_SESSION['numlogin'];
+        if ($n1 != $n2) {
+            echo "<p>O login não foi efetuado</p>";
+            exit;
+        }
+    }else{
+        echo "<p>Página não encontrada</p>";
+        exit;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +29,13 @@
     <title>Document</title>
 </head>
 <body>
+    
     <header>
         <?php
             include "topo.php";
         ?>
     </header>
-
+    
     <section id="gerenciamento" class="gerenciamento">
         <p>Menu principal de gerenciamento</p>
     </section>
@@ -36,7 +59,7 @@
         <div class="menu-gerenciamento">
             <button id="menu3" class="menu-style">Usuários</button>
             <div id="menudrop3" class="menu-drop">
-                <a href="#" target="_self">Novo</a>
+                <a href="novo-usuario.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                 <a href="#" target="_self">Editar</a>
                 <a href="#" target="_self">Excluir</a>
             </div>
@@ -50,7 +73,6 @@
     </nav>
     
     <!-- Script para os menus drop -->
-
     <script>
         $(document).ready(function name(params) {
             $("#menu1").click(function () {

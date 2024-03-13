@@ -24,7 +24,7 @@
 
             $sql = "SELECT * FROM tb_colaboradores WHERE s_user_name='$user' AND s_user_password='$password'";
             $res = mysqli_query($con, $sql); // executa o comando sql
-            $ret = mysqli_affected_rows($con); // verifica quantas linhas foram retornadas pela conexão quantas eu tiver no banco de dados
+            $ret = mysqli_fetch_array($res); // verifica quantas linhas foram retornadas pela conexão quantas eu tiver no banco de dados, nesse caso retorna em formato de array
 
             if ($ret == 0) {
                 echo "<p id='lgErro' style='color: red;'>Login incorreto</p>";
@@ -43,6 +43,7 @@
                 session_start();
                 $_SESSION['numlogin'] = $num;
                 $_SESSION['username'] = $user;
+                $_SESSION['acesso'] = $ret['i_user_acesso']; // 0 restrito e 1 permissção
 
                 header("Location: gerenciamento.php?num=$num");
             }
