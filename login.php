@@ -18,6 +18,7 @@
 
         include "conexaoDB.php"; // Acessa o banco de dados
 
+        // Função "isset" Verifica se o formulário foi submetido Retorna true se SIM ou false se NÃO
         if (isset($_POST["f_logar"])) {
             $user = $_POST["f_user"];
             $password = $_POST["f_senha"];

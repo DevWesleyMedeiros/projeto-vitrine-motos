@@ -5,3 +5,5 @@ Para fazer consulta em um banco de dados, segue-se o passo a passo:
 3 -  FECHAR A CONEXÃO COM O BANCO DE dados
 
 4 - Arrumar o script de menu drop no jquery
+
+5 - Resolver o problema de inserção de um novo colaborador no arquivo de novo_usuario
