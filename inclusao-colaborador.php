@@ -40,11 +40,10 @@
         <!-- Rotina para inserir um novo colaborador na minha tabela -->
         <!-- Toda a rotina abaixo somente será executado logo após o botão de submit ter sido acionado, após o carregamento da página-->
         <!-- Se o meu botão de submit não tiver sido acionado, simplismente só o HTML do formulário é lido -->
-
         
         <?php
             // f_novo_colaborador - meu botão de submit do formulário
-            
+
             if (isset($_GET["f_novo_colaborador"])) {
                 $name = mysqli_real_escape_string($con, $_GET['_nome']);
                 $username = mysqli_real_escape_string($con, $_GET['_user']);
@@ -67,9 +66,8 @@
         ?>
 
 
-
         <!-- HTML que carrega o formulário -->
-        <form action="novo-usuario.php" name="campo-novo-colaborador" method="get" class="f-nome-colaborador">
+        <form action="inclusao-colaborador.php" name="campo-novo-colaborador" method="get" class="f-nome-colaborador">
             <input type="hidden" name="num" value="<?php echo $n1; ?>">
             <label>Usuário</label>
             <input type="text" name="_nome" maxlength="255" size="50" class="text" requerid="requerid">
