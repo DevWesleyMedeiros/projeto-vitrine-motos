@@ -43,7 +43,8 @@
 
         
         <?php
-             
+            // f_novo_colaborador - meu botão de submit do formulário
+            
             if (isset($_GET["f_novo_colaborador"])) {
                 $name = mysqli_real_escape_string($con, $_GET['_nome']);
                 $username = mysqli_real_escape_string($con, $_GET['_user']);

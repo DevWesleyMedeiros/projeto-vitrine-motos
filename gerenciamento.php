@@ -17,7 +17,6 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
         echo "<p>Página não encontrada</p>";
         exit;
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -64,13 +63,13 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
                 <div class='menu-gerenciamento'>
                     <button id='menu3' class='menu-style'>Usuários</button>
                     <div id='menudrop3' class='menu-drop'>
-                        <a href='novo-usuario.php?num=$n1;' target='_self'>Novo</a>
+                        <a href='novo-usuario.php?num=$n1' target='_self'>Novo</a>
                         <a href='#' target='_self'>Editar</a>
                         <a href='#' target='_self'>Excluir</a>
                     </div>
                 </div>";
             }
-        <?
+        ?>
         
         <div class="menu-gerenciamento">
             <button id="menu4" class="menu-style">LogOff</button>
