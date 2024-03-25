@@ -64,7 +64,7 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
                     <button id='menu3' class='menu-style'>Usuários</button>
                     <div id='menudrop3' class='menu-drop'>
                         <a href='inclusao-colaborador.php?num=$n1' target='_self'>Novo</a>
-                        <a href='#' target='_self'>Editar</a>
+                        <a href='editar-colaborador.php?num=$n1' target='_self'>Editar</a>
                         <a href='exclusao-colaborador.php?num=$n1' target='_self'>Excluir</a>
                     </div>
                 </div>";

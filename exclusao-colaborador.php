@@ -57,7 +57,7 @@
             <select name="colaboradores" size="10">
                 <?php
 
-                    $sql = "select * from tb_colaboradores";
+                    $sql = "SELECT * FROM tb_colaboradores";
                     $colaboradores = mysqli_query($con, $sql);
                     while ($exibir = mysqli_fetch_array($colaboradores)) {
                         echo "<option value='".$exibir['i_id_colaborador']."'>".$exibir['s_nome']."</option>";
