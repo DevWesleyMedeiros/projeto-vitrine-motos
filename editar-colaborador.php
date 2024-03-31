@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>excluir colaborador</title>
+    <title>Editar colaborador</title>
 </head>
 <body>
     
@@ -46,27 +46,27 @@
                     $sql = "SELECT * FROM tb_colaboradores";
                     $colaboradores = mysqli_query($con, $sql);
                     // $total_colaboradores = mysqli_num_rows($colaboradores);
-                    while ($exibir = mysqli_fetch_array($colaboradores)) {
-                        echo "<option value='".$exibir['i_id_colaborador']."'>".$exibir['s_nome']."</option>";
+                    while ($exiber = mysqli_fetch_array($colaboradores)) {
+                        echo "<option value='".$exiber['i_id_colaborador']."'>".$exiber['s_nome']."</option>";
                     }
                 ?>
             </select>
             <input type="submit" class="botao-menu menu-style" name="f_editar_colaborador" value="Editar">
         </form>
 
-        <?php>
+        <?php
 
-            if (isset($_GET["colaboradores"])) {
-                $coloboradorID = $_GET["colaboradores"];
+            if (isset($_GET["f_editar_colaborador"])) {
+                $colaboradorID = $_GET["colaboradores"];
                 $sql = "SELECT * FROM tb_colaboradores WHERE i_id_colaborador = $colaboradorID";
                 $col = mysqli_query($con, $sql);
-                $exibi = mysqli_fetch_array($col);
-                if ($exibe >= 1) {
+                $exibe = mysqli_fetch_array($col);
+                if ($exibe) {
                     echo "
                     <form name='f_editar_colaborador' action='editar-colaborador.php' class='f-nome-colaborador' method='get'>
-                    <input type='hidden' name='num' value='<?php echo $n1; ?>'>
+                    <input type='hidden' name='num' value='$n1'>
                     <input type='hidden' name='id' value='".$exibe['i_id_colaborador']."'>
-                    <label>Nome<input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['s_nome']"'>
+                    <label>Nome<input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['s_nome']."'>
                     </label>
                     <label>Nome de usuário<input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['s_user_name']."'>
                     </label>
@@ -78,19 +78,38 @@
                     </form>";
                 }
             }
-        ?>
 
+        if (isset($_GET["f_editar_colaborador"])) {
+            $id = $_GET['num'];
+            $name = $_GET['_nome'];
+            $user_name = $_GET['_username'];
+            $user_password = $_GET['_userpassword'];
+            $user_access = $_GET['_useracesso'];
+
+            $sql = "UPDATE tb_colaboradores SET $id, $name, $user_name, $user_password, $user_access WHERE i_id_colaborador = $id";
+
+            $res = mysqli_query($con, $sql);
+            $linhas = mysqli_affected_rows($res);
+            if ($linhas >= 1) {
+                header('location: editar-colaborador.php?num'.$n1);
+            }else{
+                echo "<p style='color: red;'>Erro ao atualizar colaborador</p>";
+            }
+        }
+            
+        ?>
         <?php
 
-            if (isset($_GET["f_editar_colaborador"])) {
-                $colaboradorID = $_GET["colaboradores"];
-                $sql = "DELETE FROM tb_colaboradores WHERE i_id_colaborador = $colaboradorID";
+            if (isset($_GET["f_editarColaborador"])) {
+                $colaboradorID = $_GET["id"];
+                // Aqui deveria ser uma operação de atualização, não exclusão
+                $sql = "UPDATE tb_colaboradores SET s_nome = '".$_GET['_nome']."', s_user_name = '".$_GET['_username']."', s_user_password = '".$_GET['_userpassword']."', i_user_acesso = '".$_GET['_useracesso']."' WHERE i_id_colaborador = $colaboradorID";
                 mysqli_query($con, $sql);
                 $rows = mysqli_affected_rows($con);
                 if ($rows >= 1) {
-                    echo "<p style='color: #0000ff;'>Colaborador deletado com sucesso</p>";
+                    echo "<p style='color: #0000ff;'>Colaborador atualizado com sucesso</p>";
                 }else{
-                    echo "<p style='color: #ff0000;'>Erro ao deletar um colaborador</p>";
+                    echo "<p style='color: #ff0000;'>Erro ao atualizar um colaborador</p>";
                 }
             }     
         ?>

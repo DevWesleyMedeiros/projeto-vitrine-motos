@@ -51,9 +51,9 @@
         }
         mysqli_close($con); // fechar a conexão de con
         ?>    
-    
+            <!-- Este formulário permite o acesso o local para manipular os colaboradores -->
         <form action="login.php" method="post" name="f_login" id="f_login" class="f_login">
-            <label for="user">Usuário</label>
+            <label for="user">User Admin</label>
             <input type="text" name="f_user" id="user">
             <label for="password">Senha</label>
             <input type="password" name="f_senha" id="password">

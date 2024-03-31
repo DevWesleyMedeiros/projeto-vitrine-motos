@@ -1,3 +1,5 @@
+<!-- Página de entrada do meu site -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
