@@ -46,7 +46,7 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
                 <a href="#" target="_self">Novo</a>
                 <a href="#" target="_self">Editar</a>
                 <a href="#" target="_self">Excluir</a>
-                <a href="#" target="_self">Marca</a>
+                <a href="marcas-modelos.php?num=<?php echo $n1 ?>" target="_self">Marca <br>Modelos</a>
             </div>
         </div>
         <div class="menu-gerenciamento">
