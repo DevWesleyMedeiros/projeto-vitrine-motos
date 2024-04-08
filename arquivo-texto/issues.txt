@@ -1,2 +1,1 @@
-1 - Alterar o acesso ao usuário weslei
-2 - Corrigir o problema do script de editar - novo usuário
+1 - Corrigir problema de exclusão de marca e modelo
