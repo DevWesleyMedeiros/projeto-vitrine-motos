@@ -1,20 +1,17 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
 import { createHtmlPlugin } from 'vite-plugin-html';
-import eslintPlugin from 'vite-plugin-eslint';
-import path from 'path'
+import path from 'path';
 
 export default defineConfig({
-    plugins: [
-        createHtmlPlugin({
-          inject: {
-            data: {
-              title: 'Vitrine de Motos',
-            },
-          },
-        }),
-        eslintPlugin(),
-      ],
+  plugins: [
+    createHtmlPlugin({
+      inject: {
+        data: {
+          title: 'Vitrine de Motos',
+        },
+      },
+    }),
+  ],
 
   root: './frontend',
 
@@ -43,11 +40,12 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      '@assets': path.resolve(__dirname, 'frontend/assets'),
+      '@assets-images': path.resolve(__dirname, 'frontend/imagens'),
+      '@assets-icons': path.resolve(__dirname, 'frontend/icons'),
       '@scripts': path.resolve(__dirname, 'frontend/scripts'),
       '@styles': path.resolve(__dirname, 'frontend/styles'),
       '@pages': path.resolve(__dirname, 'frontend/pages'),
-      '@layouts':path.resolve(__dirname, 'frontend/layouts')
+      '@layouts': path.resolve(__dirname, 'frontend/layouts'),
     },
   },
 
@@ -55,9 +53,15 @@ export default defineConfig({
     open: true,
     port: 3000,
     proxy: {
+      // Redireciona requisições para o backend PHP
       '/api': 'http://localhost:8000',
+      '/': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
     },
   },
+
   preview: {
     port: 4173,
   },

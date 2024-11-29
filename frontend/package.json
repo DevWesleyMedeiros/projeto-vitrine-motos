@@ -5,6 +5,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
+        "lint": "eslint ./frontend/**/*.js",
         "build": "vite build",
         "preview": "vite preview",
         "test": "vitest"
@@ -34,8 +35,10 @@
     },
     "homepage": "https://github.com/DevWesleyMedeiros/projeto-vitrine-motos#readme",
     "devDependencies": {
+        "lint": "eslint ./frontend/**/*.js",
         "vite": "^6.0.1",
         "vite-plugin-eslint": "^1.8.1",
+        "vite-plugin-html": "^3.2.2",
         "vitest": "^0.34.1"
     },
     "engines": {
