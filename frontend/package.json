@@ -1,0 +1,49 @@
+{
+    "name": "vitrine-de-motos",
+    "version": "1.0.0",
+    "description": "Veja diversas motos esportivas disponíveis",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "vitest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DevWesleyMedeiros/projeto-vitrine-motos"
+    },
+    "keywords": [
+        "Fullstack",
+        "Vitrine de motos",
+        "motos esportivas",
+        "PHP",
+        "Banco de dados",
+        "JavaScript",
+        "typescript",
+        "jquery",
+        "fontawesome",
+        "frontend",
+        "html5",
+        "css3"
+    ],
+    "author": "Wesley Medeiros da Rosa",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/DevWesleyMedeiros/projeto-vitrine-motos/issues"
+    },
+    "homepage": "https://github.com/DevWesleyMedeiros/projeto-vitrine-motos#readme",
+    "devDependencies": {
+        "vite": "^6.0.1",
+        "vite-plugin-eslint": "^1.8.1",
+        "vitest": "^0.34.1"
+    },
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.1",
+        "jquery": "^3.7.1"
+    }
+}
