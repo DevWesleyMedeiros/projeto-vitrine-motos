@@ -1,0 +1,40 @@
+Entendendo o Design Pattern MVC - model view controller
+Controller >> model >> controller processed date from model shown by View
+
+A arquitetura MVC (Model-View-Controller) é um padrão de design amplamente utilizado para organizar e estruturar aplicações, separando responsabilidades distintas em camadas, o que facilita a manutenção e escalabilidade. Ela é uma abordagem que se aplica principalmente a projetos web, mas pode ser usada em qualquer tipo de aplicação que envolva interação entre dados, lógica e interface de usuário.
+
+Em um projeto fullstack (que engloba tanto o backend quanto o frontend), a arquitetura MVC ajuda a dividir as responsabilidades de forma clara e lógica.
+
+1. Model (Modelo)
+♦ Responsabilidade: O Model é a camada responsável por representar a lógica de dados. Ele gerencia os dados e as regras de negócios da aplicação. No contexto de um banco de dados, o Model mapeia as entidades que serão manipuladas (por exemplo, Usuários, Produtos, Pedidos, etc.).
+→ Backend: No backend, o Model normalmente interage com o banco de dados (por exemplo, usando ORM - Object-Relational Mapping, como Sequelize, TypeORM, ou Mongoose para MongoDB). Ele é responsável por recuperar, atualizar, criar e excluir dados.
+→ Frontend: No frontend, o Model pode ser representado por uma estrutura de dados que mantém o estado da aplicação. No caso de frameworks como React, o Model pode ser uma combinação de estado (state) e lógica que manipula as interações do usuário.
+
+2. View (Visão)
+♦ Responsabilidade: A View é a camada que trata da apresentação dos dados ao usuário. Ela não contém lógica de negócios, apenas exibe as informações que o Controller passa para ela.
+→ Backend: No backend, a View é geralmente responsável por gerar as respostas HTML, JSON ou XML que serão enviadas para o frontend. Frameworks como Express.js (Node.js) ou Django (Python) geram a View, que pode ser um HTML renderizado ou dados JSON a serem consumidos pelo frontend.
+→ Frontend: No frontend, a View é a parte que renderiza a interface de usuário. Pode ser um template HTML estático ou um componente interativo que exibe os dados provenientes do backend, como em frameworks como React, Vue.js ou Angular.
+
+3. Controller (Controlador)
+♦ Responsabilidade: O Controller serve como intermediário entre o Model e a View. Ele recebe a entrada do usuário (geralmente via requisições HTTP), manipula as interações de dados com o Model, e retorna uma resposta que é passada para a View para renderização.
+→ Backend: No backend, os Controllers gerenciam as rotas da aplicação. Quando uma requisição é feita, o Controller lida com o processamento dessa requisição, interage com o Model para obter ou alterar dados e, por fim, passa a resposta para a View.
+→ Frontend: No frontend, o Controller pode ser visto como a lógica que manipula eventos de interface, como cliques, formulários enviados, etc. Ele também pode fazer requisições para o backend (via AJAX, fetch, etc.) e atualizar o Model e a View de acordo com os dados recebidos.
+
+Fluxo da Arquitetura MVC em um Projeto
+Backend: 
+	• Requisição HTTP chega ao Controller (ex: GET /usuarios).
+	• O Controller chama o Model para recuperar ou manipular dados do banco de dados.
+        • O Model interage com a base de dados (SQL, NoSQL, etc.), recuperando ou alterando informações.
+	• O Controller processa os dados recebidos do Model e retorna uma resposta adequada (normalmente em formato   	JSON ou HTML) para o View.
+
+Frontend:
+	• O View (ex: um componente React ou uma página HTML) exibe os dados ao usuário.
+	O usuário interage com o View, gerando eventos que são enviados para o Controller no frontend (ex: envio de 	formulário ou clique em botão).
+	• O Controller do frontend faz requisições ao backend (via API RESTful, GraphQL, etc.).
+	• O model do backend retorna os dados ou status da operação.
+	O Controller do frontend manipula a resposta, atualizando o View com os novos dados ou mensagens.
+
+Vantagens do MVC em Projetos Fullstack:
+→ Separação de responsabilidades: O padrão MVC ajuda a manter a lógica de negócios, a interface de usuário e o controle de fluxo de dados separados, o que facilita a manutenção e os testes.
+→ Escalabilidade: Cada camada pode ser modificada ou expandida de forma independente. Por exemplo, você pode alterar a lógica do Model sem afetar a View ou Controller.
+→ Facilidade de manutenção: A clara separação das responsabilidades torna o código mais organizado e fácil de entender, o que facilita a colaboração entre equipes de frontend e backend.

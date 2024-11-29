@@ -1,3 +1,5 @@
+<!-- Section inicial que que seleciona uma mota preferida  -->
+
 <p class="title">Encontre seua moto preferida</p>
 <form name="fbuscador" id="fbuscador" class="fbuscador" action="#" method="post">
     <div class="div-search">

@@ -8,7 +8,7 @@ body {
   overflow: scroll;
   overflow-x: hidden;
   background-color: #fff;
-  background-image: url("../assets/topo-background.jpeg");
+  background-image: url("../images/topo-background.jpeg");
   background-repeat: repeat-x;
 }
 header {
@@ -17,7 +17,7 @@ header {
 #logo {
   width: 311px;
   height: 120px;
-  background-image: url("../assets/logo.svg");
+  background-image: url("../icons/logo.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

@@ -14,7 +14,7 @@
     }
 
     // No arquivo abaixo esta a variável com o script de conexão com o banco de dados. Temos de fazer o import para fazer o uso dela aqui como o banco de dados e o formulário
-    include "conexaoDB.php";
+    include "/backend/models/conexaoDB.php";
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
     
     <header>
         <?php
-            include "topo.php";
+            include "/frontend/layouts/topo.php";
         ?>
     </header>
     

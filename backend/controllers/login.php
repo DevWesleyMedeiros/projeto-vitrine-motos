@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/styles/main.css">
     <title>Show bikes</title>
 </head>
 <body>
     <header>
         <?php
-            include "topo.php";
+            include "/frontend/layouts/topo.php";
         ?>
     </header>
     
@@ -16,7 +17,7 @@
 
         <?php
 
-        include "conexaoDB.php"; // Acessa o banco de dados
+        include "../models/conexaoDB.php"; // Acessa o banco de dados
 
         // Função "isset" Verifica se o formulário foi submetido Retorna true se SIM ou false se NÃO
         if (isset($_POST["f_logar"])) {
@@ -63,7 +64,7 @@
 
     <footer id="rodape" class="rodape">
         <?php
-            include "rodape.html";
+            include "/frontend/pages/rodape.html";
         ?>
     </footer>
 </body>

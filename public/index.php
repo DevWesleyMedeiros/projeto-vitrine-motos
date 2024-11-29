@@ -1,38 +1,39 @@
 <!-- Página de entrada do meu site -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../frontend/styles/main.css">
     <title>Show bikes</title>
 </head>
 <body>
     <header>
         <?php
-            include "topo.php";
+            include "../frontend/layouts/topo.php";
         ?>
     </header>
 
     <section id="slider" class="slider">
         <?php
-            include "slider.html";
+            include "../frontend/pages/slider.html";
         ?>
     </section>
     
     <section id="search" class="search">
         <?php
-            include "search.php";
+            include "../frontend/layouts/search.php";
         ?>
     </section>
     <section id="destaques" class="destaques">
         <?php
-            include "destaques.html";
+            include "../frontend/pages/destaques.html";
         ?>
     </section>
     <footer id="rodape" class="rodape">
         <?php
-            include "rodape.html";
+            include "../frontend/pages/rodape.html";
         ?>
     </footer>
 </body>
