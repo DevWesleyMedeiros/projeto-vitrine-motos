@@ -1,48 +1,21 @@
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider de Motos</title>
+  <link rel="stylesheet" href="/frontend/styles/main.css">
+</head>
+<body>
 
-<script>
-  const sliders = ["#image1", "#image2", "#image3", "#image4", "#image5"];
-  let sliderAtual = 0;
-  let sliderMaximo = 4;
-  const time = 10000;
+  <img id="image1" class="img1" src="/public/assets-images/image-slider1.jpg" alt="image-slider">
+  <img id="image2" class="img2" src="/public/assets-images/image-slider2.jpg" alt="image-slider">
+  <img id="image3" class="img3" src="/public/assets-images/image-slider3.jpg" alt="image-slider">
+  <img id="image4" class="img4" src="/public/assets-images/image-slider4.jpg" alt="image-slider">
+  <img id="image5" class="img5" src="/public/assets-images/image-slider5.jpg" alt="image-slider">
 
-  $(document).ready(() => {
-    $(sliders[sliderAtual]).fadeTo(0, 1);
-    setInterval(changeSliders, time);
+  <!-- Importação correta do script do slider -->
+  <script type="module" src="../scripts/main.js"></script>
 
-    function changeSliders() {
-      $(sliders[sliderAtual]).fadeTo(1000, 1);
-      sliderAtual++;
-      if (sliderAtual > sliderMaximo) {
-        sliderAtual = 0;
-      }
-      $(sliders[sliderAtual]).fadeTo(1000, 1);
-    }
-  });
-</script>
-
-<img
-  id="image1"
-  class="img1"
-  src="../frontend/images/image-slider1.jpg"
-  alt="image-slider" />
-<img
-  id="image2"
-  class="img2"
-  src="../frontend/images/image-slider2.jpg"
-  alt="image-slider" />
-<img
-  id="image3"
-  class="img3"
-  src="../frontend/images/image-slider3.jpg"
-  alt="image-slider" />
-<img
-  id="image4"
-  class="img4"
-  src="../frontend/images/image-slider4.jpg"
-  alt="image-slider" />
-<img
-  id="image5"
-  class="img5"
-  src="../frontend/images/image-slider5.jpg"
-  alt="image-slider" />
+</body>
+</html>

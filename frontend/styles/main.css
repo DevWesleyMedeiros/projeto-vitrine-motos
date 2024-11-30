@@ -1,3 +1,5 @@
+import
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -8,7 +10,7 @@ body {
   overflow: scroll;
   overflow-x: hidden;
   background-color: #fff;
-  background-image: url("../images/topo-background.jpeg");
+  background-image: url("/public/assets-images/topo-background.jpeg");
   background-repeat: repeat-x;
 }
 header {
@@ -17,7 +19,7 @@ header {
 #logo {
   width: 311px;
   height: 120px;
-  background-image: url("../icons/logo.svg");
+  background-image: url("/public/assets-icons/logo.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

@@ -13,35 +13,34 @@ export default defineConfig({
     }),
   ],
 
-  root: './frontend',
+  root: './frontend', // Define a raiz do projeto de frontend
 
   build: {
-    // Saída do build na pasta "public", onde será integrado com o backend PHP
-    outDir: '../public',
+    outDir: '../public/assets', // Saída ajustada para gerar assets dentro de "public/assets"
     rollupOptions: {
       output: {
         assetFileNames: ({ name }) => {
           if (/\.(gif|jpe?g|png|svg|ico|webp|avif)$/.test(name || '')) {
-            return 'assets/images/[name]-[hash][extname]';
+            return 'images/[name]-[hash][extname]'; // Caminho ajustado para imagens
           }
           if (/\.(css)$/.test(name || '')) {
-            return 'assets/styles/[name]-[hash][extname]';
+            return 'styles/[name]-[hash][extname]'; // Caminho ajustado para CSS
           }
           if (/\.(ttf|otf|woff|woff2)$/.test(name || '')) {
-            return 'assets/fonts/[name]-[hash][extname]';
+            return 'fonts/[name]-[hash][extname]'; // Caminho ajustado para fontes
           }
-          return 'assets/[name]-[hash][extname]';
+          return '[name]-[hash][extname]'; // Padrão para outros arquivos
         },
-        chunkFileNames: 'chunks/[name]-[hash].js',
-        entryFileNames: 'scripts/[name]-[hash].js',
+        chunkFileNames: 'chunks/[name]-[hash].js', // Arquivos divididos
+        entryFileNames: 'scripts/[name]-[hash].js', // Arquivo de entrada JS
       },
     },
   },
 
   resolve: {
     alias: {
-      '@assets-images': path.resolve(__dirname, 'frontend/imagens'),
-      '@assets-icons': path.resolve(__dirname, 'frontend/icons'),
+      '@assets-images': path.resolve(__dirname, 'public/assets-images'),
+      '@assets-icons': path.resolve(__dirname, 'public/assets-icons'),
       '@scripts': path.resolve(__dirname, 'frontend/scripts'),
       '@styles': path.resolve(__dirname, 'frontend/styles'),
       '@pages': path.resolve(__dirname, 'frontend/pages'),
@@ -53,16 +52,17 @@ export default defineConfig({
     open: true,
     port: 3000,
     proxy: {
-      // Redireciona requisições para o backend PHP
-      '/api': 'http://localhost:8000',
+      // Redireciona requisições para o backend PHP no XAMPP
+      '/api': 'http://localhost:8000', // Endpoint para APIs
       '/': {
-        target: 'http://localhost:8000',
+        target: 'http://localhost/projeto-vitrine-motos/public', // Backend PHP
         changeOrigin: true,
+        secure: false,
       },
     },
   },
 
   preview: {
-    port: 4173,
+    port: 4173, // Porta usada para pré-visualização da build
   },
 });
