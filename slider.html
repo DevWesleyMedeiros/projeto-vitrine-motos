@@ -1,21 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slider de Motos</title>
-  <link rel="stylesheet" href="/frontend/styles/main.css">
-</head>
-<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <img id="image1" class="img1" src="/public/assets-images/image-slider1.jpg" alt="image-slider">
-  <img id="image2" class="img2" src="/public/assets-images/image-slider2.jpg" alt="image-slider">
-  <img id="image3" class="img3" src="/public/assets-images/image-slider3.jpg" alt="image-slider">
-  <img id="image4" class="img4" src="/public/assets-images/image-slider4.jpg" alt="image-slider">
-  <img id="image5" class="img5" src="/public/assets-images/image-slider5.jpg" alt="image-slider">
+  <img 
+  id="image1" 
+  class="img1" 
+  src="./assets-images/image-slider1.jpg" 
+  alt="image-slider">
 
-  <!-- Importação correta do script do slider -->
-  <script type="module" src="../scripts/main.js"></script>
+  <img 
+  id="image2" 
+  class="img2" 
+  src="./assets-images/image-slider2.jpg" 
+  alt="image-slider">
+
+  <img 
+  id="image3" 
+  class="img3" 
+  src="./assets-images/image-slider3.jpg" 
+  alt="image-slider">
+
+  <img 
+  id="image4" 
+  class="img4" 
+  src="./assets-images/image-slider4.jpg" 
+  alt="image-slider">
+
+  <img 
+  id="image5" 
+  class="img5" 
+  src="./assets-images/image-slider5.jpg" 
+  alt="image-slider">
+
+  <script>
+    const sliders = [document.getElementById("#image1"), document.getElementById("#image2"), document.getElementById("#image3"), document.getElementById("#image4"), document.getElementById("#image5")];
+    let sliderAtual = 0;
+    let sliderMaximo = 4;
+    const time = 10000;
+
+    $(function() {
+        $(sliders[sliderAtual]).fadeTo(0, 1);
+        setInterval(changeSliders, time);
+
+        function changeSliders() {
+            $(sliders[sliderAtual]).fadeOut(1000);
+            sliderAtual++;
+            if (sliderAtual > sliderMaximo) {
+            sliderAtual = 0;
+            }
+            $(sliders[sliderAtual]).fadeIn(1000);
+        }
+    });
+  </script>
 
 </body>
 </html>

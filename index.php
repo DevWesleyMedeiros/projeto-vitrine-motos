@@ -5,16 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/styles/main.css">
+    <link rel="stylesheet" href="./main.css">
     <title>Show Bikes</title>
 </head>
 <body>
     <header>
-        <?php include "../frontend/layouts/topo.php"; ?>
+        <?php include "./topo.php"; ?>
     </header>
 
     <section id="slider" class="slider">
-        <?php include "../frontend/pages/slider.html"; ?>
+        <?php include "./slider.html"; ?>
     </section>
     
     <section id="search" class="search">
