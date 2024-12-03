@@ -5,7 +5,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "hyu112358@";
-    $database = "wesleyveiculos";
+    $database = "motorbikesshop";
     $port = 3307;
 
     // Criar conexão

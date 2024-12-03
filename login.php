@@ -25,29 +25,18 @@
             $password = $_POST["f_senha"];
 
             // Usando prepared statements para evitar SQL Injection
-            $sql = "SELECT * FROM tb_colaboradores WHERE s_user_name = ? AND s_user_password = ?";
-            $stmt = mysqli_prepare($con, $sql);
-            mysqli_stmt_bind_param($stmt, "ss", $user, $password);
-            mysqli_stmt_execute($stmt);
-            $res = mysqli_stmt_get_result($stmt);
-            $ret = mysqli_fetch_array($res); // verifica se encontrou algum usuário
+            $sql = "SELECT * FROM tb_colaboradores WHERE str_username_colaboradores = $user AND str_senha_colaboradores = $password";
+            $response = mysqli_query($con, $sql);
+            $return = msquli_affected_rows($con);
 
-            // Verificando se o login foi bem-sucedido
-            if (!$ret) {
-                echo "<p id='lgErro' style='color: red;'>Login incorreto</p>";
-            } else {
-                // Gerando um token de login seguro
-                $num = bin2hex(random_bytes(16)); // Gerando um token de 32 caracteres hexadecimais
-                session_start();
-                
-                // Armazenando informações na sessão
-                $_SESSION['numlogin'] = $num;
-                $_SESSION['username'] = $user;
-                $_SESSION['acesso'] = $ret['i_user_acesso']; // 0 restrito, 1 permissão
-
-                // Redirecionando para a página de gerenciamento
-                header("Location: gerenciamento.php?num=$num");
-                exit; // Garante que o código após o header não seja executado
+            if(($user != "wesley") or ($password != "123")){
+               echo "<p id='login_error'>Login incorreto</p>";
+            }else{
+                $key1 = "abcdefghijklmnopqrstuvwxuz";
+                $key2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                $key3 = "0123456789";
+                $urlKey = srt_shuffle($key1.$key2.$key3);
+                $sizeKey = strlen($urlKey);
             }
         }
         mysqli_close($con); // Fechar a conexão com o banco de dados
