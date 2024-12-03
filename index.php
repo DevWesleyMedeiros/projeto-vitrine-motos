@@ -18,15 +18,15 @@
     </section>
     
     <section id="search" class="search">
-        <?php include "../frontend/layouts/search.php"; ?>
+        <?php include "./search.php"; ?>
     </section>
 
     <section id="destaques" class="destaques">
-        <?php include "../frontend/pages/destaques.html"; ?>
+        <?php include "./destaques.html"; ?>
     </section>
 
     <footer id="rodape" class="rodape">
-        <?php include "../frontend/pages/rodape.html"; ?>
+        <?php include "./rodape.html"; ?>
     </footer>
 </body>
 </html>

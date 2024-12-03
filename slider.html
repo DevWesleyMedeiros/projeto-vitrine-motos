@@ -1,55 +1,57 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-  <img 
+<img 
   id="image1" 
   class="img1" 
   src="./assets-images/image-slider1.jpg" 
   alt="image-slider">
 
-  <img 
+<img 
   id="image2" 
   class="img2" 
   src="./assets-images/image-slider2.jpg" 
   alt="image-slider">
 
-  <img 
+<img 
   id="image3" 
   class="img3" 
   src="./assets-images/image-slider3.jpg" 
   alt="image-slider">
 
-  <img 
+<img 
   id="image4" 
   class="img4" 
   src="./assets-images/image-slider4.jpg" 
   alt="image-slider">
 
-  <img 
+<img 
   id="image5" 
   class="img5" 
   src="./assets-images/image-slider5.jpg" 
   alt="image-slider">
 
-  <script>
-    const sliders = [document.getElementById("#image1"), document.getElementById("#image2"), document.getElementById("#image3"), document.getElementById("#image4"), document.getElementById("#image5")];
-    let sliderAtual = 0;
-    let sliderMaximo = 4;
-    const time = 10000;
+<script>
+  $(function(){
+      const sliders = [
+          document.getElementById("image1"),
+          document.getElementById("image2"),
+          document.getElementById("image3"),
+          document.getElementById("image4"),
+          document.getElementById("image5")
+      ];
+      let sliderAtual = 0;
+      let sliderMaximo = 4;
+      const time = 5000;
 
-    $(function() {
-        $(sliders[sliderAtual]).fadeTo(0, 1);
-        setInterval(changeSliders, time);
-
-        function changeSliders() {
-            $(sliders[sliderAtual]).fadeOut(1000);
-            sliderAtual++;
-            if (sliderAtual > sliderMaximo) {
-            sliderAtual = 0;
-            }
-            $(sliders[sliderAtual]).fadeIn(1000);
-        }
-    });
-  </script>
-
-</body>
-</html>
+      $(sliders[sliderAtual]).fadeTo(1000, 1);
+      function changeSliders() {
+          $(sliders[sliderAtual]).fadeOut(1000);
+          sliderAtual++;
+          if (sliderAtual > sliderMaximo) {
+              sliderAtual = 0; 
+          }
+          $(sliders[sliderAtual]).fadeTo(1000, 1); 
+      }
+      setInterval(changeSliders, time);
+  })
+</script>
