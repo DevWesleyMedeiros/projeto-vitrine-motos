@@ -8,38 +8,44 @@
 </head>
 <body>
     <header>
-        <?php
-            include "./topo.php";
-        ?>
+        <?php include "./topo.php"; ?>
     </header>
     
     <section id="main" class="main">
-
         <?php
-
         include "./conexaoDB.php"; // Este arquivo faz a conexão primeiramente
 
-        // Função "isset" Verifica se o formulário foi submetido
         if (isset($_POST["f_logar"])) {
             $user = $_POST["f_user"];
             $password = $_POST["f_senha"];
 
-            // Usando prepared statements para evitar SQL Injection
-            $sql = "SELECT * FROM tb_colaboradores WHERE str_username_colaboradores = $user AND str_senha_colaboradores = $password";
+            $sql = "SELECT * FROM tb_colaboradores WHERE str_username_colaboradores = '$user' AND str_senha_colaboradores = '$password'";
             $response = mysqli_query($con, $sql);
-            $return = msquli_affected_rows($con);
+            $return = mysqli_fetch_array($response);
 
-            if(($user != "wesley") or ($password != "123")){
-               echo "<p id='login_error'>Login incorreto</p>";
-            }else{
+            if ($return == 0) {
+                echo "<p id='login_error'>Login incorreto</p>";
+            } else {
                 $key1 = "abcdefghijklmnopqrstuvwxuz";
                 $key2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                 $key3 = "0123456789";
-                $urlKey = srt_shuffle($key1.$key2.$key3);
-                $sizeKey = strlen($urlKey);
+                $urlKey = str_shuffle($key1 . $key2 . $key3);
+                $keySize = strlen($urlKey);
+                $num = "";
+                $keyRandChar = rand(20, 50);
+                for ($i = 0; $i < $keyRandChar; $i++) { 
+                    $pos = rand(0, $keySize - 1);
+                    $num .= substr($urlKey, $pos, 1);
+                }
+                session_start();
+                $_SESSION['f_user'] = $user;
+                $_SESSION['f_senha'] = $password;
+                $_SESSION['acesso'] = $retorno['acesso'];
+                $_SESSION['numlogin'] = $num;
+                header("location:gerenciamento.php?num=$num");
             }
+            mysqli_close($con);
         }
-        mysqli_close($con); // Fechar a conexão com o banco de dados
         ?>    
     
         <form action="login.php" method="post" name="f_login" id="f_login" class="f_login">
@@ -50,11 +56,5 @@
             <input type="submit" value="LOGAR" name="f_logar">
         </form>
     </section>
-
-    <footer id="rodape" class="rodape">
-        <?php
-            include "./rodape.html";
-        ?>
-    </footer>
 </body>
 </html>

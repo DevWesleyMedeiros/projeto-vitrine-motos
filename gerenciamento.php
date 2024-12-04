@@ -1,22 +1,18 @@
-<!-- 
-Script para validar a página de gerenciamento, 
-uma vez que o meu sistema permite o acesso na página sem fazer o devido 
-login ou simplismente digitando o endereço da página de gerenciamento, o que não faz sentido nenhum haja visto que temos o login justamente para isso. A ideia aqui é permitir acesso a página de gerenciamento somente depois de ter sido feito o login.
--->
 <?php
-    session_start();
-    
-    if (isset($_SESSION['numlogin'])) {
-        $n1 = $_GET['num'];
-        $n2 = $_SESSION['numlogin'];
-        if ($n1 != $n2) {
-            echo "<p>O login não foi efetuado</p>";
-            exit;
-        }
-    }else{
-        echo "<p>Página não encontrada</p>";
+// Verifica se houve o login antes de fazer a ação
+session_start();
+
+if (isset($_SESSION['numlogin'])) {
+    $n1 = $_GET['num'];
+    $n2 = $_SESSION['numlogin'];
+    if ($n1 != $n2) {
+        echo "<p>O login não foi efetuado</p>";
         exit;
     }
+} else {
+    echo "<p>Página não encontrada</p>";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +25,7 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
     <title>Gerenciamento</title>
 </head>
 <body>
-    
-    <header>
-        <?php
-            include "./main.css";
-        ?>
-    </header>
+    <header></header>
     
     <section id="gerenciamento" class="gerenciamento">
         <p>Menu principal de gerenciamento</p>
@@ -47,7 +38,7 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
                 <a href="#" target="_self">Novo</a>
                 <a href="#" target="_self">Editar</a>
                 <a href="#" target="_self">Excluir</a>
-                <a href="marcas-modelos.php?num=<?php echo $n1 ?>" target="_self">Marca <br>Modelos</a>
+                <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
             </div>
         </div>
         <div class="menu-gerenciamento">
@@ -56,64 +47,55 @@ login ou simplismente digitando o endereço da página de gerenciamento, o que n
                 <a href="#" target="_self">Configurar</a>
             </div>
         </div>
-
-        <!-- Gerenciar o acesso permitir a inserção de um novo colaborador se a permissão de acesso for igual a 1, ou seja, o usuário possui acesso -->
         <?php
-            if ($_SESSION['acesso'] == 1) {
-                echo "
-                <div class='menu-gerenciamento'>
-                    <button id='menu3' class='menu-style'>Usuários</button>
-                    <div id='menudrop3' class='menu-drop'>
-                        <a href='inclusao-colaborador.php?num=$n1' target='_self'>Novo</a>
-                        <a href='editar-colaborador.php?num=$n1' target='_self'>Editar</a>
-                        <a href='exclusao-colaborador.php?num=$n1' target='_self'>Excluir</a>
-                    </div>
-                </div>";
-            }
+        if (isset($_SESSION['acesso']) && $_SESSION['acesso'] == 1) {
+            echo "
+            <div class='menu-gerenciamento'>
+                <button id='menu3' class='menu-style'>Usuários</button>
+                <div id='menudrop3' class='menu-drop'>
+                    <a href='inclusao-colaborador.php?num=$n1' target='_self'>Novo</a>
+                    <a href='editar-colaborador.php?num=$n1' target='_self'>Editar</a>
+                    <a href='exclusao-colaborador.php?num=$n1' target='_self'>Excluir</a>
+                </div>
+            </div>";
+        }
         ?>
         
         <div class="menu-gerenciamento">
             <button id="menu4" class="menu-style">LogOff</button>
             <div id="menudrop4" class="menu-drop">
-                <a href="#" target="_self">Sair</a>
+                <a href="login.php" target="_self">Sair</a>
             </div>
         </div>
     </nav>
-    
-    <!-- Script para os menus drop -->
+
     <script>
-        $(document).ready(function name(params) {
+        $(document).ready(function () {
             $("#menu1").click(function () {
                 $("#menudrop1").css("visibility", "visible");
-                $("#menudrop2").css("visibility", "hidden");
-                $("#menudrop3").css("visibility", "hidden");
-                $("#menudrop4").css("visibility", "hidden");
+                $("#menudrop2, #menudrop3, #menudrop4").css("visibility", "hidden");
             });
             $("#menu2").click(function () {
                 $("#menudrop2").css("visibility", "visible");
-                $("#menudrop1").css("visibility", "hidden");
-                $("#menudrop3").css("visibility", "hidden");
-                $("#menudrop4").css("visibility", "hidden");
+                $("#menudrop1, #menudrop3, #menudrop4").css("visibility", "hidden");
             });
             $("#menu3").click(function () {
                 $("#menudrop3").css("visibility", "visible");
-                $("#menudrop1").css("visibility", "hidden");
-                $("#menudrop2").css("visibility", "hidden");
-                $("#menudrop4").css("visibility", "hidden");
+                $("#menudrop1, #menudrop2, #menudrop4").css("visibility", "hidden");
             });
             $("#menu4").click(function () {
                 $("#menudrop4").css("visibility", "visible");
-                $("#menudrop1").css("visibility", "hidden");
-                $("#menudrop2").css("visibility", "hidden");
-                $("#menudrop3").css("visibility", "hidden");
+                $("#menudrop1, #menudrop2, #menudrop3").css("visibility", "hidden");
             });
-            $("#menudrop1", "#menudrop2", "#menudrop3", "#menudrop4").mouseover(function () { 
-                $(this).css("visibility", "visible");
-            });
-            $("#menudrop1", "#menudrop2", "#menudrop3", "#menudrop4").mouseout(function () { 
-                $(this).css("visibility", "hidden");
-            });
-        })
+            $("#menudrop1, #menudrop2, #menudrop3, #menudrop4").hover(
+                function () {
+                    $(this).css("visibility", "visible"); // Quando estiver dentro
+                },
+                function () {
+                    $(this).css("visibility", "hidden"); // Quando estiver forea
+                }
+            );
+        });
     </script>
 </body>
 </html>
