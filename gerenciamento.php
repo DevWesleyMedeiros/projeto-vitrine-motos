@@ -48,7 +48,7 @@ if (isset($_SESSION['numlogin'])) {
             </div>
         </div>
 
-        <div class="menu-gerenciamento">
+        <!-- <div class="menu-gerenciamento">
             <button id="menu1" class="menu_style">Usuários</button>
             <div id="menudrop1" class="menu-drop">
                 <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
@@ -56,17 +56,18 @@ if (isset($_SESSION['numlogin'])) {
                 <a href="#" target="_self">Excluir</a>
                 <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marcas e Modelos</a>
             </div>
-        </div>
-
+        </div> -->
+        
         <?php
         if (isset($_SESSION['acesso']) && $_SESSION['acesso'] == 1) {
             echo "
             <div class='menu-gerenciamento'>
-                <button id='menu3' class='menu_style'>Usuários</button>
-                <div id='menudrop3' class='menu-drop'>
+                <button id='menu1' class='menu_style'>Usuários</button>
+                <div id='menudrop1' class='menu-drop'>
                     <a href='inclusao-colaborador.php?num=$n1' target='_self'>Novo</a>
                     <a href='editar-colaborador.php?num=$n1' target='_self'>Editar</a>
                     <a href='exclusao-colaborador.php?num=$n1' target='_self'>Excluir</a>
+                    <a href='marcas-modelos.php?num=<?php echo $n1; ?>" target='_self'>Marcas e Modelos</a>
                 </div>
             </div>";
         }

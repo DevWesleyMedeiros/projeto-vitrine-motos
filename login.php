@@ -51,9 +51,9 @@
         <div class="login_form">
             <form action="login.php" method="post" name="f_login" id="f_login" class="f_login">
                 <label>User Admin</label>
-                <input type="text" name="f_user" id="user" required aria-label="usuário" placeholder="Digite seu usuário">
+                <input type="text" name="f_user" id="user" required aria-label="usuário" placeholder="Nome de usuário">
                 <label>Senha</label>
-                <input type="password" name="f_senha" id="password" required aria-label="senha" placeholder="Digite sua senha">
+                <input type="password" name="f_senha" id="password" required aria-label="senha" placeholder="Sua senha">
                 <label>
                     <input type="checkbox" name="remember_me"> Lembre-se de mim
                 </label>

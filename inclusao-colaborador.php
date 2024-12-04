@@ -33,7 +33,7 @@ include "./conexaoDB.php";
         <a href="gerenciamento.php?num=<?php echo $n1; ?>" class="botao-menu" role="button">Voltar</a>
 
         <h2>Novo Usuário</h2>
-
+      
         <?php
         if (isset($_GET["f_novo_colaborador"])) {
             $name = mysqli_real_escape_string($con, $_GET['_nome']);
@@ -41,28 +41,34 @@ include "./conexaoDB.php";
             $password = mysqli_real_escape_string($con, $_GET['_senha']);
             $access = mysqli_real_escape_string($con, $_GET['_acesso']);
 
-            $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) 
-                    VALUES ('$name', '$username', '$password', $access)";
+            // A consulta SQL agora não inclui a chave primária (presumindo que seja AUTO_INCREMENT)
+            $sql = "INSERT INTO tb_colaboradores (str_nome_colaboradores, str_username_colaboradores, str_senha_colaboradores, int_acesso_colaboradores) VALUES ('$name', '$username', '$password', $access)";
 
-            if (mysqli_query($con, $sql)) {
-                echo "<p style='color: blue;'>Novo colaborador gravado com sucesso</p>";
+            // Executa a consulta SQL
+            mysqli_query($con, $sql);
+            $linesDBReturn = mysqli_affected_rows($con);
+            
+            if ($linesDBReturn >= 1) {
+                echo "<p style='color: blue; margin-left: 0.5rem; margin-bottom: 0.5rem;'>Novo colaborador gravado com sucesso</p>";
             } else {
-                echo "<p style='color: red;'>Erro ao gravar um novo colaborador: " . mysqli_error($con) . "</p>";
+                echo "<p style='color: red; margin-left: 0.5rem; margin-bottom: 0.5rem;'>Erro ao gravar um novo colaborador</p>";
             }
         }
         ?>
 
         <div class="form_employee">
             <form action="inclusao-colaborador.php" method="get" class="f-nome-colaborador">
-
                 <input type="hidden" name="num" value="<?php echo $n1; ?>">
             
                 <label>Usuário</label>
                 <input type="text" name="_nome" maxlength="255" size="50" class="text" required aria-label="Nome" placeholder="Seu nome">
+                
                 <label>Username</label>
                 <input type="text" name="_user" maxlength="255" size="50" class="text" required aria-label="Nome de usuário" placeholder="Nome de usuário">
+                
                 <label>Senha</label>
                 <input type="text" name="_senha" maxlength="255" size="50" class="text" required aria-label="Senha" placeholder="Sua senha">
+                
                 <label>Acesso</label>
                 <input type="text" name="_acesso" class="text" required pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1"><br>
             
