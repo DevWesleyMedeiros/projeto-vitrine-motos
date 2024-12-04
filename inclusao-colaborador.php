@@ -13,7 +13,7 @@ if (isset($_SESSION['numlogin'])) {
     exit;
 }
 
-include "./conexaoDB.php"; // Verificação de conexão já deve estar na conexaoDB.php
+include "./conexaoDB.php";
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@ include "./conexaoDB.php"; // Verificação de conexão já deve estar na conexa
     <section id="main" class="main">
         <a href="gerenciamento.php?num=<?php echo $n1; ?>" class="botao-menu" role="button">Voltar</a>
 
-        <h1>Novo Usuário</h1>
+        <h2>Novo Usuário</h2>
 
         <?php
         if (isset($_GET["f_novo_colaborador"])) {
@@ -52,23 +52,23 @@ include "./conexaoDB.php"; // Verificação de conexão já deve estar na conexa
         }
         ?>
 
-        <form action="inclusao-colaborador.php" method="get" class="f-nome-colaborador">
-            <input type="hidden" name="num" value="<?php echo $n1; ?>">
+        <div class="form_employee">
+            <form action="inclusao-colaborador.php" method="get" class="f-nome-colaborador">
+
+                <input type="hidden" name="num" value="<?php echo $n1; ?>">
             
-            <label>Usuário</label>
-            <input type="text" name="_nome" maxlength="255" size="50" class="text" required>
-
-            <label>Username</label>
-            <input type="text" name="_user" maxlength="255" size="50" class="text" required>
-
-            <label>Senha</label>
-            <input type="text" name="_senha" maxlength="255" size="50" class="text" required>
-
-            <label>Acesso</label>
-            <input type="text" name="_acesso" class="text" required pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1">
+                <label>Usuário</label>
+                <input type="text" name="_nome" maxlength="255" size="50" class="text" required aria-label="Nome" placeholder="Seu nome">
+                <label>Username</label>
+                <input type="text" name="_user" maxlength="255" size="50" class="text" required aria-label="Nome de usuário" placeholder="Nome de usuário">
+                <label>Senha</label>
+                <input type="text" name="_senha" maxlength="255" size="50" class="text" required aria-label="Senha" placeholder="Sua senha">
+                <label>Acesso</label>
+                <input type="text" name="_acesso" class="text" required pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1"><br>
             
-            <input type="submit" class="botao-menu" name="f_novo_colaborador" value="Gravar">
-        </form>
+                <input type="submit" class="botao-menu" name="f_novo_colaborador" value="Gravar">
+            </form>
+        </div>
     </section>
 </body>
 </html>

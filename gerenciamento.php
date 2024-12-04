@@ -54,7 +54,7 @@ if (isset($_SESSION['numlogin'])) {
                 <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                 <a href="#" target="_self">Editar</a>
                 <a href="#" target="_self">Excluir</a>
-                <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
+                <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marcas e Modelos</a>
             </div>
         </div>
 
@@ -94,7 +94,7 @@ if (isset($_SESSION['numlogin'])) {
                 },
                 function () {
                     $(this).css("visibility", "hidden");
-                }
+                },
             );
         });
     </script>
