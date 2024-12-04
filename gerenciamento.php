@@ -1,9 +1,8 @@
 <?php
-// Verifica se houve o login antes de fazer a ação
 session_start();
 
 if (isset($_SESSION['numlogin'])) {
-    $n1 = $_GET['num'];
+    $n1 = $_GET['num'] ?? null;
     $n2 = $_SESSION['numlogin'];
     if ($n1 != $n2) {
         echo "<p>O login não foi efetuado</p>";
@@ -25,33 +24,45 @@ if (isset($_SESSION['numlogin'])) {
     <title>Gerenciamento</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <?php include "./topo.php"; ?>
+    </header>
     
-    <section id="gerenciamento" class="gerenciamento">
-        <p>Menu principal de gerenciamento</p>
-    </section>
+    <h2 class="gerenciamento_titulo">Menu principal de gerenciamento</h2>
 
-    <nav>
+    <nav class="gerenciamento">
         <div class="menu-gerenciamento">
-            <button id="menu1" class="menu-style">Motos</button>
+                <button id="menu1" class="menu_style">Motos</button>
+                <div id="menudrop1" class="menu-drop">
+                    <!-- <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
+                    <a href="#" target="_self">Editar</a>
+                    <a href="#" target="_self">Excluir</a>
+                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a> -->
+                </div>
+        </div>
+
+        <div class="menu-gerenciamento">
+            <button id="menu2" class="menu_style">Slider</button>
+            <div id="menudrop2" class="menu-drop">
+                <a href="#" target="_self">Configurar</a>
+            </div>
+        </div>
+
+        <div class="menu-gerenciamento">
+            <button id="menu1" class="menu_style">Usuários</button>
             <div id="menudrop1" class="menu-drop">
-                <a href="#" target="_self">Novo</a>
+                <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                 <a href="#" target="_self">Editar</a>
                 <a href="#" target="_self">Excluir</a>
                 <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
             </div>
         </div>
-        <div class="menu-gerenciamento">
-            <button id="menu2" class="menu-style">Slider</button>
-            <div id="menudrop2" class="menu-drop">
-                <a href="#" target="_self">Configurar</a>
-            </div>
-        </div>
+
         <?php
         if (isset($_SESSION['acesso']) && $_SESSION['acesso'] == 1) {
             echo "
             <div class='menu-gerenciamento'>
-                <button id='menu3' class='menu-style'>Usuários</button>
+                <button id='menu3' class='menu_style'>Usuários</button>
                 <div id='menudrop3' class='menu-drop'>
                     <a href='inclusao-colaborador.php?num=$n1' target='_self'>Novo</a>
                     <a href='editar-colaborador.php?num=$n1' target='_self'>Editar</a>
@@ -62,37 +73,27 @@ if (isset($_SESSION['numlogin'])) {
         ?>
         
         <div class="menu-gerenciamento">
-            <button id="menu4" class="menu-style">LogOff</button>
+            <button id="menu4" class="menu_style">LogOff</button>
             <div id="menudrop4" class="menu-drop">
                 <a href="login.php" target="_self">Sair</a>
             </div>
         </div>
+
     </nav>
 
     <script>
         $(document).ready(function () {
-            $("#menu1").click(function () {
-                $("#menudrop1").css("visibility", "visible");
-                $("#menudrop2, #menudrop3, #menudrop4").css("visibility", "hidden");
+            $(".menu_style").on("click", function () {
+                $(".menu-drop").css("visibility", "hidden");
+                $(this).next(".menu-drop").css("visibility", "visible");
             });
-            $("#menu2").click(function () {
-                $("#menudrop2").css("visibility", "visible");
-                $("#menudrop1, #menudrop3, #menudrop4").css("visibility", "hidden");
-            });
-            $("#menu3").click(function () {
-                $("#menudrop3").css("visibility", "visible");
-                $("#menudrop1, #menudrop2, #menudrop4").css("visibility", "hidden");
-            });
-            $("#menu4").click(function () {
-                $("#menudrop4").css("visibility", "visible");
-                $("#menudrop1, #menudrop2, #menudrop3").css("visibility", "hidden");
-            });
-            $("#menudrop1, #menudrop2, #menudrop3, #menudrop4").hover(
+
+            $(".menu-drop").hover(
                 function () {
-                    $(this).css("visibility", "visible"); // Quando estiver dentro
+                    $(this).css("visibility", "visible");
                 },
                 function () {
-                    $(this).css("visibility", "hidden"); // Quando estiver forea
+                    $(this).css("visibility", "hidden");
                 }
             );
         });

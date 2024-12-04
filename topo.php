@@ -3,8 +3,18 @@
 <link rel="stylesheet" href="./main.css">
 <div id="logo"></div>
 <nav id="menu">
-    <a class="menu-style" href="/public/index.php" target="_self">Home</a>
-    <a class="menu-style" href="/public/index.php" target="_self">Motos</a>
-    <a class="menu-style" href="/public/index.php" target="_self">Contatos</a>
-    <a class="menu-style" href="/public/index.php" target="_self">Localização</a>
+    <ul class="menu_items">
+        <li class="menu_style">
+            <a href="index.php" target="_self">Home</a>
+        </li>
+        <li class="menu_style">
+            <a href="index.php" target="_self">Motos</a>
+        </li>
+        <li class="menu_style">
+            <a href="index.php" target="_self">Contatos</a>
+        </li>
+        <li class="menu_style">
+            <a href="index.php" target="_self">Localização</a>
+        </li>
+    </ul>
 </nav>

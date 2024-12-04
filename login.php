@@ -24,7 +24,7 @@
             $return = mysqli_fetch_array($response);
 
             if ($return == 0) {
-                echo "<p id='login_error'>Login incorreto</p>";
+                echo "<p id='login_error' class='login_error'>Login incorreto</p>";
             } else {
                 $key1 = "abcdefghijklmnopqrstuvwxuz";
                 $key2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -48,13 +48,19 @@
         }
         ?>    
     
-        <form action="login.php" method="post" name="f_login" id="f_login" class="f_login">
-            <label for="user">User Admin</label>
-            <input type="text" name="f_user" id="user" required>
-            <label for="password">Senha</label>
-            <input type="password" name="f_senha" id="password" required>
-            <input type="submit" value="LOGAR" name="f_logar">
-        </form>
+        <div class="login_form">
+            <form action="login.php" method="post" name="f_login" id="f_login" class="f_login">
+                <label>User Admin</label>
+                <input type="text" name="f_user" id="user" required aria-label="usuário" placeholder="Digite seu usuário">
+                <label>Senha</label>
+                <input type="password" name="f_senha" id="password" required aria-label="senha" placeholder="Digite sua senha">
+                <label>
+                    <input type="checkbox" name="remember_me"> Lembre-se de mim
+                </label>
+                <input type="submit" value="LOGAR" name="f_logar">
+            </form>
+        </div>
+        
     </section>
 </body>
 </html>

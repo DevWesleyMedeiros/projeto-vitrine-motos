@@ -1,20 +1,19 @@
-<?php
-    session_start();
-    
-    if (isset($_SESSION['numlogin'])) {
-        $n1 = $_GET['num'];
-        $n2 = $_SESSION['numlogin'];
-        if ($n1 != $n2) {
-            echo "<p>O login não foi efetuado</p>";
-            exit;
-        }
-    }else{
-        echo "<p>Página não encontrada</p>";
+<?php  
+session_start();
+
+if (isset($_SESSION['numlogin'])) {
+    $n1 = $_GET['num'] ?? null;
+    $n2 = $_SESSION['numlogin'];
+    if ($n1 != $n2) {
+        echo "<p>O login não foi efetuado</p>";
         exit;
     }
+} else {
+    echo "<p>Página não encontrada</p>";
+    exit;
+}
 
-    // No arquivo abaixo esta a variável com o script de conexão com o banco de dados. Temos de fazer o import para fazer o uso dela aqui como o banco de dados e o formulário
-    include "/backend/models/conexaoDB.php";
+include "./conexaoDB.php"; // Verificação de conexão já deve estar na conexaoDB.php
 ?>
 
 <!DOCTYPE html>
@@ -22,64 +21,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
     <title>Incluir colaborador</title>
 </head>
 <body>
-    
     <header>
-        <?php
-            include "/frontend/layouts/topo.php";
-        ?>
+        <?php include "./topo.php"; ?>
     </header>
     
     <section id="main" class="main">
-        
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-menu">Voltar</a>
-        <h1>Novo usuário</h1>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" class="botao-menu" role="button">Voltar</a>
 
-        <!-- Rotina para inserir um novo colaborador na minha tabela -->
-        <!-- Toda a rotina abaixo somente será executado logo após o botão de submit ter sido acionado, após o carregamento da página-->
-        <!-- Se o meu botão de submit não tiver sido acionado, simplismente só o HTML do formulário é lido -->
-        
+        <h1>Novo Usuário</h1>
+
         <?php
-            // f_novo_colaborador - meu botão de submit do formulário
+        if (isset($_GET["f_novo_colaborador"])) {
+            $name = mysqli_real_escape_string($con, $_GET['_nome']);
+            $username = mysqli_real_escape_string($con, $_GET['_user']);
+            $password = mysqli_real_escape_string($con, $_GET['_senha']);
+            $access = mysqli_real_escape_string($con, $_GET['_acesso']);
 
-            if (isset($_GET["f_novo_colaborador"])) {
-                $name = mysqli_real_escape_string($con, $_GET['_nome']);
-                $username = mysqli_real_escape_string($con, $_GET['_user']);
-                $password = mysqli_real_escape_string($con, $_GET['_senha']);
-                $access = mysqli_real_escape_string($con, $_GET['_acesso']); // Supondo que '_acesso' seja o nome correto do parâmetro.
+            $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) 
+                    VALUES ('$name', '$username', '$password', $access)";
 
-                // Comando SQL para inserir um novo colaborador
-                $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) VALUES ('$name', '$username', '$password', $access)";
-
-                // Executa o comando SQL diretamente no banco de dados
-                // Verifica quantas linhas foram afetadas
-                mysqli_query($con, $sql); 
-                $row = mysqli_affected_rows($con);
-                if ($row >= 1) {
-                    echo "<p style='color: blue;'>Novo colaborador gravado com sucesso</p>";
-                } else {
-                    echo "<p style='color: red;'>Erro ao gravar um novo colaborador</p>";
-                }
+            if (mysqli_query($con, $sql)) {
+                echo "<p style='color: blue;'>Novo colaborador gravado com sucesso</p>";
+            } else {
+                echo "<p style='color: red;'>Erro ao gravar um novo colaborador: " . mysqli_error($con) . "</p>";
             }
+        }
         ?>
 
-
-        <!-- HTML que carrega o formulário -->
-        <form action="inclusao-colaborador.php" name="campo-novo-colaborador" method="get" class="f-nome-colaborador">
+        <form action="inclusao-colaborador.php" method="get" class="f-nome-colaborador">
             <input type="hidden" name="num" value="<?php echo $n1; ?>">
+            
             <label>Usuário</label>
-            <input type="text" name="_nome" maxlength="255" size="50" class="text" requerid="requerid">
+            <input type="text" name="_nome" maxlength="255" size="50" class="text" required>
+
             <label>Username</label>
-            <input type="text" name="_user" maxlength="255" size="50" class="text" requerid="requerid">
+            <input type="text" name="_user" maxlength="255" size="50" class="text" required>
+
             <label>Senha</label>
-            <input type="text" name="_senha" maxlength="255" size="50" class="text" requerid="requerid">
+            <input type="text" name="_senha" maxlength="255" size="50" class="text" required>
+
             <label>Acesso</label>
-            <input type="text" name="_acesso" class="text" requerid="requerid" pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1">
+            <input type="text" name="_acesso" class="text" required pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1">
+            
             <input type="submit" class="botao-menu" name="f_novo_colaborador" value="Gravar">
         </form>
     </section>
-
 </body>
 </html>
