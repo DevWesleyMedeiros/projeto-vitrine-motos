@@ -40,7 +40,7 @@
                 session_start();
                 $_SESSION['f_user'] = $user;
                 $_SESSION['f_senha'] = $password;
-                $_SESSION['acesso'] = $retorno['acesso'];
+                $_SESSION['_acesso'] = $return['_acesso'];
                 $_SESSION['numlogin'] = $num;
                 header("location:gerenciamento.php?num=$num");
             }

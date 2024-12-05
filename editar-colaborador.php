@@ -2,7 +2,7 @@
     session_start();
     
     if (isset($_SESSION['numlogin'])) {
-        $n1 = $_GET['num'];
+        $n1 = $_GET['num'] ?? null;
         $n2 = $_SESSION['numlogin'];
         if ($n1 != $n2) {
             echo "<p>O login não foi efetuado</p>";

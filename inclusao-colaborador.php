@@ -41,8 +41,7 @@ include "./conexaoDB.php";
             $password = mysqli_real_escape_string($con, $_GET['_senha']);
             $access = mysqli_real_escape_string($con, $_GET['_acesso']);
 
-            $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) 
-                    VALUES ('$name', '$username', '$password', $access)";
+            $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) VALUES ('$name', '$username', '$password', $access)";
 
             if (mysqli_query($con, $sql)) {
                 echo "<p style='color: blue;'>Novo colaborador gravado com sucesso</p>";
