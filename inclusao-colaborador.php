@@ -41,17 +41,13 @@ include "./conexaoDB.php";
             $password = mysqli_real_escape_string($con, $_GET['_senha']);
             $access = mysqli_real_escape_string($con, $_GET['_acesso']);
 
-            // A consulta SQL agora não inclui a chave primária (presumindo que seja AUTO_INCREMENT)
-            $sql = "INSERT INTO tb_colaboradores (str_nome_colaboradores, str_username_colaboradores, str_senha_colaboradores, int_acesso_colaboradores) VALUES ('$name', '$username', '$password', $access)";
+            $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) 
+                    VALUES ('$name', '$username', '$password', $access)";
 
-            // Executa a consulta SQL
-            mysqli_query($con, $sql);
-            $linesDBReturn = mysqli_affected_rows($con);
-            
-            if ($linesDBReturn >= 1) {
-                echo "<p style='color: blue; margin-left: 0.5rem; margin-bottom: 0.5rem;'>Novo colaborador gravado com sucesso</p>";
+            if (mysqli_query($con, $sql)) {
+                echo "<p style='color: blue;'>Novo colaborador gravado com sucesso</p>";
             } else {
-                echo "<p style='color: red; margin-left: 0.5rem; margin-bottom: 0.5rem;'>Erro ao gravar um novo colaborador</p>";
+                echo "<p style='color: red;'>Erro ao gravar um novo colaborador: " . mysqli_error($con) . "</p>";
             }
         }
         ?>

@@ -188,7 +188,6 @@ input[type="password"]:focus {
   background-color: #222;
   border-radius: 10px;
   color: #bbb;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
   cursor: pointer;
   transition: all 0.5s linear;
@@ -260,7 +259,6 @@ nav.gerenciamento {
 /* Início da página de inclusão de colaborador */
 .main {
     max-width: 960px;
-    border: 1px solid #cacaca;
     padding-top: 20px;
   }
 .main > a.botao-menu, h2{
@@ -299,6 +297,41 @@ nav.gerenciamento {
     margin-left: 0.5rem;
 }
 /* Fim da página de inclusão de colaborador*/
+
+/* Inicio da página de exclusão de um colaborador */
+.delete-employee{
+    max-width: 960px;
+    margin-top: 1rem;
+}
+.delete-employee > a.botao-menu, .delete-button{
+    display: table-cell;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1px 5px;
+    margin: 0.5rem 0;
+    background-color: #222;
+    border-radius: 10px;
+    color: #bbb;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+.delete-employee a.botao-menu:hover, .delete-button:hover {
+    background-color: #c22;
+    color: #fff;
+  }
+  .delete-employee > h1{
+    margin: 0.5rem 0;
+  }
+  .delete-employee > .delete-form{
+    width: 100%;
+  }
+
+/* Fim da página de exclusão de um colaborador */
+
 
 /* Inicio do footer */
 footer {
