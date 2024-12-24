@@ -12,7 +12,7 @@
         echo "<p>Página não encontrada</p>";
         exit;
     }
-    include "/backend/models/conexaoDB.php";
+    include "./conexaoDB.php";
 ?>
 
 
@@ -28,7 +28,7 @@
     
     <header>
         <?php
-            include "/frontend/layouts/topo.php";
+            include "./topo.php";
         ?>
     </header>
     
@@ -46,7 +46,7 @@
 
                     $sql = "SELECT * FROM tb_colaboradores";
                     $colaboradores = mysqli_query($con, $sql);
-                    // $total_colaboradores = mysqli_num_rows($colaboradores);
+                    $total_colaboradores = mysqli_num_rows($colaboradores);
                     while ($exiber = mysqli_fetch_array($colaboradores)) {
                         echo "<option value='".$exiber['i_id_colaborador']."'>".$exiber['s_nome']."</option>";
                     }

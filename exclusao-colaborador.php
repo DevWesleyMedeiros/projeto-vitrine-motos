@@ -40,16 +40,20 @@
 
         <?php
 
-            if (isset($_GET["f_excluir_colaborador"])) {
-                $colaboradorID = $_GET["colaboradores"];
-                $sql = "DELETE FROM tb_colaboradores WHERE int_id_colaborador_colaboradores = $colaboradorID";
-                mysqli_query($con, $sql);
-                $rows = mysqli_affected_rows($con);
-                if ($rows >= 1) {
-                    echo "<p style='color: #0000ff;'>Colaborador deletado com sucesso</p>";
+            if (isset($_GET['f_excluir_colaborador'])) {
+
+                $colaboradorID = $_GET['colaboradores'];
+                if(isset($colaboradorID)){
+                    $sql = "DELETE FROM tb_colaboradores WHERE int_id_colaborador_colaboradores = $colaboradorID";
+                    mysqli_query($con, $sql);
+                    $rows = mysqli_affected_rows($con);
+                    if ($rows >= 1) {
+                        echo "<p style='color: #0000ff;'>Colaborador deletado com sucesso</p>";
+                    }
                 }else{
-                    echo "<p style='color: #ff0000;'>Erro ao deletar um colaborador</p>";
+                    echo "<p style='color: #ff0000;'>Colaborador não selecionado</p>";
                 }
+                
             }     
         ?>
 
@@ -62,7 +66,7 @@
                         $sql = "SELECT * FROM tb_colaboradores";
                         $colaboradores = mysqli_query($con, $sql);
                         while ($exibir = mysqli_fetch_array($colaboradores)) {
-                            echo "<option value='".$exibir['int_id_colaboradores_colaboradores']."'>".$exibir['str_nome_colaboradores']."</option>";
+                            echo "<option value='".$exibir['int_id_colaborador_colaboradores']."'>".$exibir['str_nome_colaboradores']."</option>";
                         }
                     ?>
                 </select>

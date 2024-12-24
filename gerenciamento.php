@@ -34,10 +34,10 @@ if (isset($_SESSION['numlogin'])) {
         <div class="menu-gerenciamento">
                 <button id="menu1" class="menu_style">Motos</button>
                 <div id="menudrop1" class="menu-drop">
-                    <!-- <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
+                    <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                     <a href="#" target="_self">Editar</a>
-                    <a href="#" target="_self">Excluir</a>
-                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a> -->
+                    <a href="exclusao-colaborador.php" target="_self">Excluir</a>
+                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
                 </div>
         </div>
 
@@ -48,16 +48,24 @@ if (isset($_SESSION['numlogin'])) {
             </div>
         </div>
 
-        <div class="menu-gerenciamento">
-            <button id="menu3" class="menu_style">Usuários</button>
-            <div id="menudrop3" class="menu-drop">
-                <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
-                <a href="editar-colaborador.php?num=<?php echo $n1; ?>" target="_self">Editar</a>
-                <a href="exclusao-colaborador.php?num=<?php echo $n1;?>" target="_self">Excluir</a>
-                <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marcas e Modelos</a>
+        <!-- Acesso condicional ao menu de colaboradores -->
+        <?php
+            if (!$_SESSION['_acesso']) { // Verifica se o usuário tem permissão 0 não tem permissão e 1 tem permissão
+        ?>
+            <div class="menu-gerenciamento">
+                <button id="menu3" class="menu_style">Usuários</button>
+                <div id="menudrop3" class="menu-drop">
+                    <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
+                    <a href="editar-colaborador.php?num=<?php echo $n1; ?>" target="_self">Editar</a>
+                    <a href="exclusao-colaborador.php?num=<?php echo $n1;?>" target="_self">Excluir</a>
+                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marcas e Modelos</a>
+                </div>
             </div>
-        </div>;
-        
+
+        <?php
+            } // fecha a estrutura condicional aberta
+        ?>
+
         <div class="menu-gerenciamento">
             <button id="menu4" class="menu_style">LogOff</button>
             <div id="menudrop4" class="menu-drop">

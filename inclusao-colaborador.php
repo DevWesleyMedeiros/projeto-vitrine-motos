@@ -41,12 +41,12 @@ include "./conexaoDB.php";
             $password = mysqli_real_escape_string($con, $_GET['_senha']);
             $access = mysqli_real_escape_string($con, $_GET['_acesso']);
 
-            $sql = "INSERT INTO tb_colaboradores (s_nome, s_user_name, s_user_password, i_user_acesso) VALUES ('$name', '$username', '$password', $access)";
+            $sql = "INSERT INTO tb_colaboradores (str_nome_colaboradores, str_username_colaboradores, str_senha_colaboradores, int_acesso_colaboradores) VALUES ('$name', '$username', '$password', $access)";
 
             if (mysqli_query($con, $sql)) {
-                echo "<p style='color: blue;'>Novo colaborador gravado com sucesso</p>";
+                echo "<p style='color: #0000ff; margin: 0.3rem 0 0.3rem '>Novo colaborador gravado com sucesso</p>";
             } else {
-                echo "<p style='color: red;'>Erro ao gravar um novo colaborador: " . mysqli_error($con) . "</p>";
+                echo "<p style='color: #ff0000;'>Erro ao gravar um novo colaborador: " . mysqli_error($con) . "</p>";
             }
         }
         ?>

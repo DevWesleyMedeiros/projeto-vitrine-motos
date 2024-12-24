@@ -18,6 +18,7 @@
         if (isset($_POST["f_logar"])) {
             $user = $_POST["f_user"];
             $password = $_POST["f_senha"];
+            $acesso = $_POST['_acesso'];
 
             $sql = "SELECT * FROM tb_colaboradores WHERE str_username_colaboradores = '$user' AND str_senha_colaboradores = '$password'";
             $response = mysqli_query($con, $sql);
@@ -40,7 +41,7 @@
                 session_start();
                 $_SESSION['f_user'] = $user;
                 $_SESSION['f_senha'] = $password;
-                $_SESSION['_acesso'] = $return['_acesso'];
+                $_SESSION['_acesso'] = $ret['_acesso'];
                 $_SESSION['numlogin'] = $num;
                 header("location:gerenciamento.php?num=$num");
             }
