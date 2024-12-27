@@ -12,7 +12,7 @@
         echo "<p>Página não encontrada</p>";
         exit;
     }
-    include "/backend/models/conexaoDB.php";
+    include "./conexaoDB.php";
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
     
     <header>
         <?php
-            include "../layouts/topo.php";
+            include "./topo.php";
         ?>
     </header>
     

@@ -332,6 +332,41 @@ nav.gerenciamento {
 
 /* Fim da página de exclusão de um colaborador */
 
+/* Inicio da página de edição de um colaborador */
+.f-nome-colaborador{
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 1rem;
+}
+.f-nome-colaborador input:nth-last-child(5){
+    background-color: #c22;
+}
+.f-nome-colaborador input[type="text"],
+.f-nome-colaborador input[type="password"],
+.f-nome-colaborador input[type="submit"] {
+    width: 210px;
+    margin-bottom: 15px;
+    padding: 10px;
+    margin: 0.5rem;
+    font-size: 15px;
+    color: #888;
+    border: 1px solid #ccc;
+    transition: all 0.5s ease-in-out;
+}
+
+.f-nome-colaborador input[type="text"]:focus,
+.f-nome-colaborador input[type="password"]:focus {
+    border: 1px solid #625c5c;
+    border-radius: 5px;
+}
+
+.f-nome-colaborador label {
+    margin-left: 0.5rem;
+}
+/* Fim da página de edição de um colaborador */
+
 
 /* Inicio do footer */
 footer {

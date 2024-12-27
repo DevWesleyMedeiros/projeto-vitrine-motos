@@ -35,8 +35,8 @@ if (isset($_SESSION['numlogin'])) {
                 <button id="menu1" class="menu_style">Motos</button>
                 <div id="menudrop1" class="menu-drop">
                     <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
-                    <a href="#" target="_self">Editar</a>
-                    <a href="exclusao-colaborador.php" target="_self">Excluir</a>
+                    <a href="editar-colaborador.php?num=<?php echo $n1?>" target="_self">Editar</a>
+                    <a href="exclusao-colaborador.phpnum=<?php echo $n1?>" target="_self">Excluir</a>
                     <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
                 </div>
         </div>
