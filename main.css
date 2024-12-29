@@ -6,10 +6,47 @@
   outline: none;
   font-family: Arial, Helvetica, sans-serif;
 }
+:root{
+    --grey-border: 1px solid #ccc;
+}
 html,
 body {
   height: 100%;
 }
+/* Estilos Globais */
+.global-input-style{
+    width: 250px;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 15px;
+    color: #888;
+    border: var(--grey-border);
+    transition: all 0.5s ease-in-out;
+}
+.global-input-style:focus{
+    border: 1px solid #625c5c;
+    border-radius: 5px;
+}
+.global-submitButtons-style{
+  width: 150px;
+  height: 40px;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  padding: 1px 5px;
+  margin: 0;
+  background-color: #222;
+  border-radius: 10px;
+  color: #bbb;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+.global-submitButtons-style:hover{
+    background-color: #c22;
+}
+
+/* Fim dos estilos globais */
 
 body {
   margin: 0 auto;
@@ -100,7 +137,7 @@ nav#menu {
 }
 .fbuscador {
   display: flex;
-  border: 1px solid #ccc;
+  border: var(--grey-border);
   border-radius: 15px;
   padding: 20px;
 }
@@ -167,7 +204,7 @@ input[type="password"] {
   padding: 10px;
   font-size: 15px;
   color: #888;
-  border: 1px solid #ccc;
+  border: var(--grey-border);
   transition: all 0.5s ease-in-out;
 }
 .login_form .f_login input[type="text"]:focus,
@@ -198,7 +235,7 @@ input[type="password"]:focus {
 }
 .login_error {
   max-width: 150px;
-  border: 1px solid #ccc;
+  border: var(--grey-border);
   outline: 1px inset #ccc;
   padding: 0.5rem;
   color: red;
@@ -286,7 +323,7 @@ nav.gerenciamento {
     padding: 10px;
     font-size: 15px;
     color: #888;
-    border: 1px solid #ccc;
+    border: var(--grey-border);
     transition: all 0.5s ease-in-out;
 }
 .form_employee .f-nome-colaborador input:focus{
@@ -332,41 +369,6 @@ nav.gerenciamento {
 
 /* Fim da página de exclusão de um colaborador */
 
-/* Inicio da página de edição de um colaborador */
-.f-nome-colaborador{
-    border: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    margin-top: 1rem;
-}
-.f-nome-colaborador input:nth-last-child(5){
-    background-color: #c22;
-}
-.f-nome-colaborador input[type="text"],
-.f-nome-colaborador input[type="password"],
-.f-nome-colaborador input[type="submit"] {
-    width: 210px;
-    margin-bottom: 15px;
-    padding: 10px;
-    margin: 0.5rem;
-    font-size: 15px;
-    color: #888;
-    border: 1px solid #ccc;
-    transition: all 0.5s ease-in-out;
-}
-
-.f-nome-colaborador input[type="text"]:focus,
-.f-nome-colaborador input[type="password"]:focus {
-    border: 1px solid #625c5c;
-    border-radius: 5px;
-}
-
-.f-nome-colaborador label {
-    margin-left: 0.5rem;
-}
-/* Fim da página de edição de um colaborador */
-
 
 /* Inicio do footer */
 footer {
@@ -391,3 +393,13 @@ footer a:hover {
   color: #e7e7e7;
 }
 /* Fim do footer */
+
+/* Estilos para os formulários de selecionar e excluir marcas e modelos */
+.main .f_adicionar, .f_excluir_marca{
+    border: var(--grey-border);
+    margin: 0.5rem 0;
+}
+.f_adicionar .adicionar, .deletar{
+    margin-top: 1rem;
+    padding: 0.3rem;
+}

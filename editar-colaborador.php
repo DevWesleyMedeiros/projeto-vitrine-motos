@@ -60,20 +60,19 @@
                 echo "
                 <form name='f_editar_colaborador' action='editar-colaborador.php' class='f-nome-colaborador' method='get'>
                     <input type='hidden' name='num' value='$n1'>
-                    <input type='hidden' name='id' value='".$exibe['int_id_colaborador_colaboradores']."'>
-
-                    <label>Nome<input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['str_nome_colaboradores']."'></label>
-
-                    <label>Nome de usuário<input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['str_username_colaboradores']."'></label>
-
-                    <label>Senha<input type='password' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['str_senha_colaboradores']."'></label>
-
-                    <label>Acesso<input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['int_acesso_colaboradores']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'></label>
-
-                    <input type='submit' name='f_editarColaborador' value='Gravar'>
-                </form>";
+                    <input type='hidden' name='id' value='".$exibe['i_id_colaborador']."'>
+                    <label>Nome<input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['s_nome']."'>
+                    </label>
+                    <label>Nome de usuário<input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['s_user_name']."'>
+                    </label>
+                    <label>Senha<input type='text' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['s_user_password']."'>
+                    </label>
+                    <label>Acesso<input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['i_user_acesso']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'>
+                    </label>
+                    <input type='submit' class='botao-menu menu-style' name='f_editarColaborador' value='Gravar'>
+                    </form>";
+                }
             }
-        }
 
         if (isset($_GET["f_editarColaborador"])) {
             $id = $_GET['id']; // ID do colaborador
@@ -82,20 +81,32 @@
             $user_password = $_GET['_userpassword'];
             $user_access = $_GET['_useracesso'];
 
-            // Preparando a query de atualização
-            $sql = "UPDATE tb_colaboradores 
-                    SET str_nome_colaboradores = '$name', 
-                        str_username_colaboradores = '$user_name', 
-                        str_senha_colaboradores = '$user_password', 
-                        int_acesso_colaboradores = '$user_access'
-                    WHERE int_id_colaborador_colaboradores = $id";
+            $sql = "UPDATE tb_colaboradores SET $id, $name, $user_name, $user_password, $user_access WHERE i_id_colaborador = $id";
 
-            if (mysqli_query($con, $sql)) {
-                echo "<p style='color:rgb(191, 191, 208);'>Colaborador atualizado com sucesso</p>";
-            } else {
-                echo "<p style='color: #ff0000;'>Erro ao atualizar colaborador</p>";
+            $res = mysqli_query($con, $sql);
+            $linhas = mysqli_affected_rows($res);
+            if ($linhas >= 1) {
+                header('location: editar-colaborador.php?num'.$n1);
+            }else{
+                echo "<p style='color: red;'>Erro ao atualizar colaborador</p>";
             }
         }
+            
+        ?>
+        <?php
+
+            if (isset($_GET["f_editarColaborador"])) {
+                $colaboradorID = $_GET["id"];
+                // Aqui deveria ser uma operação de atualização, não exclusão
+                $sql = "UPDATE tb_colaboradores SET s_nome = '".$_GET['_nome']."', s_user_name = '".$_GET['_username']."', s_user_password = '".$_GET['_userpassword']."', i_user_acesso = '".$_GET['_useracesso']."' WHERE i_id_colaborador = $colaboradorID";
+                mysqli_query($con, $sql);
+                $rows = mysqli_affected_rows($con);
+                if ($rows >= 1) {
+                    echo "<p style='color: #0000ff;'>Colaborador atualizado com sucesso</p>";
+                }else{
+                    echo "<p style='color: #ff0000;'>Erro ao atualizar um colaborador</p>";
+                }
+            }     
         ?>
     </section>
 </body>

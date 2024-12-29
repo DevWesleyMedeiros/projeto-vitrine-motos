@@ -20,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/frontend/styles/main.css">
+    <link rel="stylesheet" href="./main.css">
     <title>Marcas e Modelos</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
                 $codigo = $_GET['codigo'];
                 if ($codigo == 1) {
                     $marca = $_GET['f_brand'];
-                    $sql = "INSERT INTO tb_marcas (s_marca) VALUE ('$marca')";
+                    $sql = "INSERT INTO tb_marcas (str_nome_marca_marcas) VALUE ('$marca')";
                     mysqli_query($con, $sql); 
                     $rows = mysqli_affected_rows($con);
                     if ($rows >= 1) {
@@ -54,7 +54,7 @@
                     // Novo modelo
                     $modelo = $_GET['f_model'];
                     $id_marca = $_GET['f_brand'];
-                    $sql = "INSERT INTO tb_modelos (s_modelo, id_marca) VALUE ('$modelo', $id_marca)";
+                    $sql = "INSERT INTO tb_modelos (str_nome_modelo_modelos, int_id_marca_modelos) VALUE ('$modelo', $id_marca)";
                     mysqli_query($con, $sql); 
                     $rows = mysqli_affected_rows($con);
                     if ($rows >= 1) {
@@ -65,7 +65,7 @@
                 }else if ($codigo == 3) {
                     // Excluir marca
                     $id_marca = $_GET['delete_brands_options'];
-                    $sql = "DELETE FROM tb_marcas WHERE id_marca = $id_marca";
+                    $sql = "DELETE FROM tb_marcas WHERE int_id_marca_marcas = $id_marca";
                     mysqli_query($con, $sql);
                     $rows = mysqli_affected_rows($con);
                     if ($rows >= 1) {
@@ -76,7 +76,7 @@
                 }else{
                     // excluir modelo
                     $id_modelo = $_GET['delete_model_options'];
-                    $sql = "DELETE FROM tb_modelos WHERE id_modelo = $id_modelo";
+                    $sql = "DELETE FROM tb_modelos WHERE int_id_modelo_modelos = $id_modelo";
                     mysqli_query($con, $sql);
                     $rows = mysqli_affected_rows($con);
                     if ($rows >= 1) {
@@ -88,18 +88,18 @@
             }
         ?>
         
-        <!-- Div para Adicionar uma marca e um modelo -->
-        <div id="f_adicionar">
-            <form action="marcas-modelos.php" method="get" name="form_add_brand">
+        <!-- Div para Adicionar uma marca -->
+        <div id="f_adicionar" class="f_adicionar">
+            <form action="marcas-modelos.php" method="get" name="form_add_brand" class="adicionar">
                 <input type="hidden" name="num" value="<?php echo $n1; ?>">
                 <input type="hidden" name="codigo" value="1">
                 <label>Nova marca</label>
-                <input type="text" name="f_brand" maxlength="50" size="50" required="required" class="text">
-                <input type="submit" class="menu-style" name="b_add_brand" value="Adicionar"></input>
+                <input type="text" name="f_brand" maxlength="50" size="50" required="required" class="global-input-style">
+                <input type="submit" class="global-submitButtons-style" name="b_add_brand" value="Adicionar"></input>
             </form>
 
-            <!-- Adicionar um modelo através de uma marca -->
-            <form action="marcas-modelos.php" method="get" name="form_add_model">
+            <!-- Adicionar um modelo -->
+            <form action="marcas-modelos.php" method="get" name="form_add_model" class="adicionar">
                 <input type="hidden" name="num" value="<?php echo $n1; ?>">
                 <input type="hidden" name="codigo" value="2">
                 <label>Selecione uma nova marca</label>
@@ -109,19 +109,19 @@
                         $col = mysqli_query($con, $sql);
 
                         while ($exibe = mysqli_fetch_array($col)) {
-                            echo "<option value='".$exibe['id_marca']."'>".$exibe['s_marca']."</option>";
+                            echo "<option value='".$exibe['int_id_marca_marcas']."'>".$exibe['str_nome_marca_marcas']."</option>";
                         }
                     ?>
                 </select>
                 <label>Novo medelo</label>
-                <input type="text" name="f_model" maxlength="50" size="50" required="required" class="text">
-                <input type="submit" class="menu-style" name="b_add_model" value="Adicionar"></input>
+                <input type="text" name="f_model" maxlength="50" size="50" required="required" class="global-input-style">
+                <input type="submit" class="global-submitButtons-style" name="b_add_model" value="Adicionar"></input>
             </form>
         </div>
 
-        <!-- Selecionar, através de uma lista, para deletar uma marca -->
-        <div id="f_excluir_marca">
-            <form action="marcas-modelos.php" method="get" name="form_delete_brand">
+        <!-- Deletar marca -->
+        <div id="f_excluir_marca" class="f_excluir_marca">
+            <form action="marcas-modelos.php" method="get" name="form_delete_brand" class="deletar">
                 <input type="hidden" name="num" value="<?php echo $n1; ?>">
                 <input type="hidden" name="codigo" value="3">
                 <label>Selecione uma marca</label>
@@ -131,33 +131,39 @@
                         $col = mysqli_query($con, $sql);
 
                         while ($exibe = mysqli_fetch_array($col)) {
-                            echo "<option value='".$exibe['id_marca']."'>".$exibe['s_marca']."</option>";
+                            echo "<option value='".$exibe['int_id_marca_marcas']."'>".$exibe['str_nome_marca_marcas']."</option>";
                         }
                     ?>
                 </select>
                 <br/> 
-                <input type="submit" class="menu-style" name="b_delete_brand" value="Excluir marca"></input>
+                <input type="submit" class="global-submitButtons-style" name="b_delete_brand" value="Excluir marca"></input>
             </form>
 
-            <!-- Deletar, através de uma lista de seleção, uma marca -->
-            <form action="marcas-modelos.php" method="get" name="form_delete_model">
+            <!-- Deletar modelo -->
+            <form action="marcas-modelos.php" method="get" name="form_delete_model" class="deletar">
                 <input type="hidden" name="num" value="<?php echo $n1; ?>">
                 <input type="hidden" name="codigo" value="4">
-                <label>Selecione uma modelo</label>
+                <label>Selecione um modelo</label>
                 <select name="delete_model_options" size="10" required="required">
                     <?php
                         $sql = "SELECT * FROM tb_modelos";
                         $col = mysqli_query($con, $sql);
 
                         while ($exibe = mysqli_fetch_array($col)) {
-                            echo "<option value='".$exibe['id_modelo']."'>".$exibe['s_modelo']."</option>";
+                            echo "<option value='".$exibe['int_id_modelo_modelos']."'>".$exibe['str_nome_modelo_modelos']."</option>";
                         }
                     ?>
                 </select>
                 <br/>  
-                <input type="submit" class="menu-style" name="b_delete_model" value="Excluir modelo"></input>
+                <input type="submit" class="global-submitButtons-style" name="b_delete_model" value="Excluir modelo"></input>
             </form>
         </div>
     </section>
 </body>
 </html>
+<!-- 
+ 1 Adicionar / criar nova marca
+ 2 Adicionar / criar novo modelo
+ 3 Deletar marca
+ 4 Deletar modelo
+ -->
