@@ -62,13 +62,17 @@
                     <input type='hidden' name='num' value='$n1'>
                     <input type='hidden' name='id' value='".$exibe['int_id_colaborador_colaboradores']."'>
 
-                    <label>Nome<input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['str_nome_colaboradores']."'></label>
+                    <label>Nome</br>
+                    <input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['str_nome_colaboradores']."'></label>
 
-                    <label>Nome de usuário<input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['str_username_colaboradores']."'></label>
+                    <label>Nome de usuário</br>
+                    <input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['str_username_colaboradores']."'></label>
 
-                    <label>Senha<input type='password' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['str_senha_colaboradores']."'></label>
+                    <label>Senha</br>
+                    <input type='password' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['str_senha_colaboradores']."'></label>
 
-                    <label>Acesso<input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['int_acesso_colaboradores']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'></label>
+                    <label>Acesso</br>
+                    <input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['int_acesso_colaboradores']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'></label>
 
                     <input type='submit' name='f_editarColaborador' value='Gravar'>
                 </form>";
@@ -91,7 +95,7 @@
                     WHERE int_id_colaborador_colaboradores = $id";
 
             if (mysqli_query($con, $sql)) {
-                echo "<p style='color:rgb(191, 191, 208);'>Colaborador atualizado com sucesso</p>";
+                echo "<p style='color: #0000ff;'>Colaborador atualizado com sucesso</p>";
             } else {
                 echo "<p style='color: #ff0000;'>Erro ao atualizar colaborador</p>";
             }
