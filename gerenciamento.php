@@ -78,7 +78,6 @@ if (isset($_SESSION['numlogin'])) {
                 <a href="login.php" target="_self">Sair</a>
             </div>
         </div>
-
     </nav>
 
     <script>
@@ -87,16 +86,17 @@ if (isset($_SESSION['numlogin'])) {
                 $(".menu-drop").css("visibility", "hidden");
                 $(this).next(".menu-drop").css("visibility", "visible");
             });
+        }
 
-            $(".menu-drop").hover(
-                function () {
-                    $(this).css("visibility", "visible");
-                },
-                function () {
-                    $(this).css("visibility", "hidden");
-                },
-            );
-        });
+        $(".menu-drop").hover(
+            function () {
+                $(this).css("visibility", "visible");
+            },
+            function () {
+                $(this).css("visibility", "hidden");
+            },
+        );
+    });
     </script>
 </body>
 </html>

@@ -27,14 +27,14 @@ body {
     border: 1px solid #625c5c;
     border-radius: 5px;
 }
-.global-submitButtons-style{
+.global-submitButtons-style, .buttons{
   width: 150px;
   height: 40px;
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
   padding: 1px 5px;
-  margin: 0;
+  margin: 1rem 0;
   background-color: #222;
   border-radius: 10px;
   color: #bbb;
@@ -42,7 +42,7 @@ body {
   cursor: pointer;
   transition: all 0.5s linear;
 }
-.global-submitButtons-style:hover{
+.global-submitButtons-style:hover, .buttons:hover{
     background-color: #c22;
 }
 
@@ -402,4 +402,5 @@ footer a:hover {
 .f_adicionar .adicionar, .deletar{
     margin-top: 1rem;
     padding: 0.3rem;
+    background-color: #bbb;
 }

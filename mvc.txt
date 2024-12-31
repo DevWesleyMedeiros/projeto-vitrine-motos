@@ -38,3 +38,11 @@ Vantagens do MVC em Projetos Fullstack:
 → Separação de responsabilidades: O padrão MVC ajuda a manter a lógica de negócios, a interface de usuário e o controle de fluxo de dados separados, o que facilita a manutenção e os testes.
 → Escalabilidade: Cada camada pode ser modificada ou expandida de forma independente. Por exemplo, você pode alterar a lógica do Model sem afetar a View ou Controller.
 → Facilidade de manutenção: A clara separação das responsabilidades torna o código mais organizado e fácil de entender, o que facilita a colaboração entre equipes de frontend e backend.
+
+==================================================================================
+
+ESTUDAR A PARTIR DESSE PROJETO
+    - PHP
+    - Banco de dados
+    - Docker
+    - Segurança
