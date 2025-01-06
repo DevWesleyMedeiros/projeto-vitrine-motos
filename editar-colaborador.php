@@ -32,7 +32,7 @@
     
     <section id="main" class="main">
         
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-menu menu-style">Voltar</a>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-voltar">Voltar</a>
         <h1>Editar colaborador</h1>
 
         <form action="editar-colaborador.php" name="editar-colaborador" method="get" class="f-editar-colaborador">
@@ -47,7 +47,7 @@
                     }
                 ?>
             </select>
-            <input type="submit" class="botao-menu menu-style" name="f_editar_colaborador" value="Editar">
+            <input type="submit" class="global-submitButtons-style" name="f_editar_colaborador" value="Editar">
         </form>
 
         <?php
@@ -62,19 +62,19 @@
                     <input type='hidden' name='num' value='$n1'>
                     <input type='hidden' name='id' value='".$exibe['int_id_colaborador_colaboradores']."'>
 
-                    <label>Nome</br>
-                    <input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['str_nome_colaboradores']."'></label>
+                    <label>Nome</label></br>
+                    <input type='text' name='_nome' size='50' class='global-input-style' maxlength='50' required='required' value='".$exibe['str_nome_colaboradores']."'>
 
-                    <label>Nome de usuário</br>
-                    <input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['str_username_colaboradores']."'></label>
+                    <label>Nome de usuário</label></br>
+                    <input type='text' name='_username' size='50' class='global-input-style' maxlength='50' required='required' value='".$exibe['str_username_colaboradores']."'>
 
-                    <label>Senha</br>
-                    <input type='password' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['str_senha_colaboradores']."'></label>
+                    <label>Senha</label></br>
+                    <input type='password' name='_userpassword' size='50' class='global-input-style' maxlength='50' required='required' value='".$exibe['str_senha_colaboradores']."'>
 
-                    <label>Acesso</br>
-                    <input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['int_acesso_colaboradores']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'></label>
+                    <label>Acesso</label></br>
+                    <input type='text' name='_useracesso' size='50' class='global-input-style' maxlength='50' required='required' value='".$exibe['int_acesso_colaboradores']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'></br>
 
-                    <input type='submit' name='f_editarColaborador' value='Gravar'>
+                    <input type='submit' name='f_editarColaborador' class='global-submitButtons-style' value='Gravar'>
                 </form>";
             }
         }

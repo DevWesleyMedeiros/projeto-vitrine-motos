@@ -34,9 +34,9 @@ if (isset($_SESSION['numlogin'])) {
         <div class="menu-gerenciamento">
                 <button id="menu1" class="menu_style">Motos</button>
                 <div id="menudrop1" class="menu-drop">
-                    <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
+                    <!-- <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                     <a href="editar-colaborador.php?num=<?php echo $n1?>" target="_self">Editar</a>
-                    <a href="exclusao-colaborador.phpnum=<?php echo $n1?>" target="_self">Excluir</a>
+                    <a href="exclusao-colaborador.phpnum=<?php echo $n1?>" target="_self">Excluir</a> -->
                     <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
                 </div>
         </div>
@@ -58,7 +58,7 @@ if (isset($_SESSION['numlogin'])) {
                     <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                     <a href="editar-colaborador.php?num=<?php echo $n1; ?>" target="_self">Editar</a>
                     <a href="exclusao-colaborador.php?num=<?php echo $n1;?>" target="_self">Excluir</a>
-                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marcas e Modelos</a>
+                    <!-- <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marcas e Modelos</a> -->
                 </div>
             </div>
 
@@ -75,22 +75,22 @@ if (isset($_SESSION['numlogin'])) {
     </nav>
 
     <script>
-        $(document).ready(function () {
-            $(".menu_style").on("click", function () {
-                $(".menu-drop").css("visibility", "hidden");
-                $(this).next(".menu-drop").css("visibility", "visible");
-            });
-        }
+    $(document).ready(function () {
+        $(".menu_style").on("click", function () {
+            $(".menu-drop").css("visibility", "hidden");
+            $(this).next(".menu-drop").css("visibility", "visible");
+        });
 
         $(".menu-drop").hover(
-            function () {
+            function () { // hover in
                 $(this).css("visibility", "visible");
             },
-            function () {
+            function () { // hover out
                 $(this).css("visibility", "hidden");
-            },
+            }
         );
     });
-    </script>
+</script>
+
 </body>
 </html>

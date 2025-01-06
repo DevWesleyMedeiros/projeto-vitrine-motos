@@ -36,7 +36,7 @@
     
     <section id="main" class="main">
         
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-menu">Voltar</a>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-voltar">Voltar</a>
         <h1>Marca e Modelo</h1>
 
         <?php
