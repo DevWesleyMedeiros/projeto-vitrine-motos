@@ -34,7 +34,7 @@
     
     <section class="delete-employee">
         
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-menu">Voltar</a>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-voltar">Voltar</a>
 
         <h1>Excluir colaborador</h1>
 
@@ -70,7 +70,7 @@
                         }
                     ?>
                 </select>
-                <input type="submit" class="delete-button" name="f_excluir_colaborador" value="excluir">
+                <input type="submit" class="global-submitButtons-style" name="f_excluir_colaborador" value="excluir">
             </form>
         </div>
 

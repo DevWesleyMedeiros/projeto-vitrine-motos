@@ -32,7 +32,7 @@
     
     <section id="main" class="main">
         
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-menu menu-style">Voltar</a>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-voltar">Voltar</a>
         <h1>Editar colaborador</h1>
 
         <form action="editar-colaborador.php" name="editar-colaborador" method="get" class="f-editar-colaborador">
@@ -47,7 +47,7 @@
                     }
                 ?>
             </select>
-            <input type="submit" class="botao-menu menu-style" name="f_editar_colaborador" value="Editar">
+            <input type="submit" class="global-submitButtons-style" name="f_editar_colaborador" value="Editar">
         </form>
 
         <?php
@@ -60,19 +60,24 @@
                 echo "
                 <form name='f_editar_colaborador' action='editar-colaborador.php' class='f-nome-colaborador' method='get'>
                     <input type='hidden' name='num' value='$n1'>
-                    <input type='hidden' name='id' value='".$exibe['i_id_colaborador']."'>
-                    <label>Nome<input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['s_nome']."'>
-                    </label>
-                    <label>Nome de usuário<input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['s_user_name']."'>
-                    </label>
-                    <label>Senha<input type='text' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['s_user_password']."'>
-                    </label>
-                    <label>Acesso<input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['i_user_acesso']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'>
-                    </label>
-                    <input type='submit' class='botao-menu menu-style' name='f_editarColaborador' value='Gravar'>
-                    </form>";
-                }
+                    <input type='hidden' name='id' value='".$exibe['int_id_colaborador_colaboradores']."'>
+
+                    <label>Nome</br>
+                    <input type='text' name='_nome' size='50' maxlength='50' required='required' value='".$exibe['str_nome_colaboradores']."'></label>
+
+                    <label>Nome de usuário</br>
+                    <input type='text' name='_username' size='50' maxlength='50' required='required' value='".$exibe['str_username_colaboradores']."'></label>
+
+                    <label>Senha</br>
+                    <input type='password' name='_userpassword' size='50' maxlength='50' required='required' value='".$exibe['str_senha_colaboradores']."'></label>
+
+                    <label>Acesso</br>
+                    <input type='text' name='_useracesso' size='50' maxlength='50' required='required' value='".$exibe['int_acesso_colaboradores']."' pattern='[0-1]+$' placeholder='0 ou 1' title='0 ou 1'></label>
+
+                    <input type='submit' name='f_editarColaborador' value='Gravar'>
+                </form>";
             }
+        }
 
         if (isset($_GET["f_editarColaborador"])) {
             $id = $_GET['id']; // ID do colaborador

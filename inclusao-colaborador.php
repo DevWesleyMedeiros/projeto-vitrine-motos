@@ -30,7 +30,7 @@ include "./conexaoDB.php";
     </header>
     
     <section id="main" class="main">
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" class="botao-menu" role="button">Voltar</a>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" class="botao-voltar" role="button">Voltar</a>
 
         <h2>Novo Usuário</h2>
       
@@ -58,17 +58,14 @@ include "./conexaoDB.php";
             
                 <label>Usuário</label>
                 <input type="text" name="_nome" maxlength="255" size="50" class="text" required aria-label="Nome" placeholder="Seu nome">
-                
                 <label>Username</label>
                 <input type="text" name="_user" maxlength="255" size="50" class="text" required aria-label="Nome de usuário" placeholder="Nome de usuário">
-                
                 <label>Senha</label>
                 <input type="text" name="_senha" maxlength="255" size="50" class="text" required aria-label="Senha" placeholder="Sua senha">
-                
                 <label>Acesso</label>
-                <input type="text" name="_acesso" class="text" required pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1"><br>
+                <input type="text" name="_acesso" class="global-input-style" required pattern="[0-1]+$" placeholder="0 ou 1" title="0 ou 1"><br>
             
-                <input type="submit" class="botao-menu" name="f_novo_colaborador" value="Gravar">
+                <input type="submit" class="global-submitButtons-style" name="f_novo_colaborador" value="Gravar">
             </form>
         </div>
     </section>

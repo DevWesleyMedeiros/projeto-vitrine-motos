@@ -14,6 +14,30 @@ body {
   height: 100%;
 }
 /* Estilos Globais */
+
+/* Estilos para os botões de voltar */
+.botao-voltar{
+    display: table-cell;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1px 5px;
+    margin: 0.5rem 0;
+    background-color: #222;
+    border-radius: 10px;
+    color: #bbb;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.5s linear;
+}
+.botao-voltar:hover{
+    background-color: #c22;
+    color: #fff;
+}
+/* Fim dos estilos para os botões de voltar */
+
 .global-input-style{
     width: 250px;
     margin-bottom: 15px;
@@ -260,13 +284,8 @@ nav.gerenciamento {
   border-radius: 10px;
   font-size: 10px;
   color: #cacaca;
-  transition: all 0.3s ease-in-out;
 }
-.gerenciamento .menu-gerenciamento .menu_style:hover{
-    font-size: 12px;
-    background-color: #111;
-    color: #fff;
-}
+
 .gerenciamento .menu-gerenciamento .menu-drop {
     display: flex;
     flex-direction: column;
@@ -285,11 +304,10 @@ nav.gerenciamento {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     text-transform: uppercase;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in;
   }
-  .gerenciamento .menu-gerenciamento .menu-drop a:hover {
-    color: #fff;
-    font-weight: bold;
+  .gerenciamento .menu-gerenciamento .menu-drop a:hover{
+    color: #fdf8f8;
   }
 /* Fim da página de gerenciamento */
 
@@ -298,21 +316,22 @@ nav.gerenciamento {
     max-width: 960px;
     padding-top: 20px;
   }
-.main > a.botao-menu, h2{
+.main > a, h2{
     margin-left: 0.5rem;
 }
 .main > h2{
     margin-bottom: 0.5rem;
 }
-  .main .botao-menu{
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bold;
-    color: #111;
-  }
-  .main .botao-menu:hover{
-    text-decoration: underline;
-  }
+/* Estilização dos formulários de adicionar marca e modelo; deletar marca e modelo */
+.main .del-form, .add-form{
+    margin-top: 1rem;
+    padding: 0.3rem;
+    background-color: #c1bdbdee;
+    border-radius: 10px;
+    outline: #392d2d;
+}
+/*Fim da Estilização dos formulários de adicionar marca e modelo; deletar marca e modelo */
+
   .form_employee{
     width: 100%;
   }
@@ -340,26 +359,6 @@ nav.gerenciamento {
     max-width: 960px;
     margin-top: 1rem;
 }
-.delete-employee > a.botao-menu, .delete-button{
-    display: table-cell;
-    width: 100px;
-    height: 30px;
-    text-decoration: none;
-    text-align: center;
-    vertical-align: middle;
-    padding: 1px 5px;
-    margin: 0.5rem 0;
-    background-color: #222;
-    border-radius: 10px;
-    color: #bbb;
-    font-size: 10px;
-    cursor: pointer;
-    transition: all 0.5s linear;
-}
-.delete-employee a.botao-menu:hover, .delete-button:hover {
-    background-color: #c22;
-    color: #fff;
-  }
   .delete-employee > h1{
     margin: 0.5rem 0;
   }
@@ -394,13 +393,3 @@ footer a:hover {
 }
 /* Fim do footer */
 
-/* Estilos para os formulários de selecionar e excluir marcas e modelos */
-.main .f_adicionar, .f_excluir_marca{
-    border: var(--grey-border);
-    margin: 0.5rem 0;
-}
-.f_adicionar .adicionar, .deletar{
-    margin-top: 1rem;
-    padding: 0.3rem;
-    background-color: #bbb;
-}
