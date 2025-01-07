@@ -368,6 +368,35 @@ nav.gerenciamento {
 
 /* Fim da página de exclusão de um colaborador */
 
+/* Inicio da página de edição de um colaborador */
+.f-nome-colaborador{
+    width: 100%;
+    border: var(--grey-border);
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+.f-nome-colaborador input[type="text"],
+.f-nome-colaborador input[type="password"],
+.f-nome-colaborador input[type="submit"] {
+    width: 210px;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 15px;
+    color: #888;
+    border: var(--grey-border);
+    transition: all 0.5s ease-in-out;
+}
+
+.f-nome-colaborador input[type="text"]:focus,
+.f-nome-colaborador input[type="password"]:focus {
+    border: 1px solid #625c5c;
+    border-radius: 5px;
+}
+
+/* Fim da página de edição de um colaborador */
+
 
 /* Inicio do footer */
 footer {
