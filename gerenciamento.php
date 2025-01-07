@@ -37,7 +37,7 @@ if (isset($_SESSION['numlogin'])) {
                     <!-- <a href="inclusao-colaborador.php?num=<?php echo $n1; ?>" target="_self">Novo</a>
                     <a href="editar-colaborador.php?num=<?php echo $n1?>" target="_self">Editar</a>
                     <a href="exclusao-colaborador.phpnum=<?php echo $n1?>" target="_self">Excluir</a> -->
-                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca <br>Modelos</a>
+                    <a href="marcas-modelos.php?num=<?php echo $n1; ?>" target="_self">Marca Modelos</a>
                 </div>
         </div>
 

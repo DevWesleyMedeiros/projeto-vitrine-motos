@@ -8,7 +8,7 @@
             <a href="index.php" target="_self">Home</a>
         </li>
         <li class="menu_style">
-            <a href="index.php" target="_self">Motos</a>
+            <a href="motos.php" target="_self">Motos</a>
         </li>
         <li class="menu_style">
             <a href="index.php" target="_self">Contatos</a>
