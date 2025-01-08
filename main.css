@@ -330,6 +330,15 @@ nav.gerenciamento {
     border-radius: 10px;
     outline: #392d2d;
 }
+.main .moto-info{
+    padding: 0.5rem;
+    background-color: #a4a5a5;
+    border: 1px solid #ccc;
+    margin: 0.5rem 0;
+}
+.moto-info p{
+    margin: 0.3rem 0;
+}
 /*Fim da Estilização dos formulários de adicionar marca e modelo; deletar marca e modelo */
 
   .form_employee{
@@ -396,7 +405,6 @@ nav.gerenciamento {
 }
 
 /* Fim da página de edição de um colaborador */
-
 
 /* Inicio do footer */
 footer {

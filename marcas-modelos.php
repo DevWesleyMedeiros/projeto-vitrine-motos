@@ -35,8 +35,7 @@
     </header>
     
     <section id="main" class="main">
-        
-        <a href="gerenciamento.php?num=<?php echo $n1; ?>" target="_self" class="botao-voltar">Voltar</a>
+        <a href="gerenciamento.php?num=<?php echo $n1; ?>" class="botao-voltar" role="button">Voltar</a>
         <h1>Marca e Modelo</h1>
 
         <?php
@@ -47,11 +46,11 @@
                     echo "<script>alert('Código inválido');</script>";
                     exit;
                 }
-
                 // Inserir nova marca
                 if ($codigo == 1) {
                     if (isset($_GET['f_brand']) && !empty($_GET['f_brand'])) {
                         $marca = mysqli_real_escape_string($con, $_GET['f_brand']);
+                        // Não precisamos definir o id_marca, pois o MySQL vai auto-incrementá-lo
                         $sql = "INSERT INTO tb_marcas (str_nome_marca_marcas) VALUES (?)";
                         $stmt = mysqli_prepare($con, $sql);
                         mysqli_stmt_bind_param($stmt, 's', $marca);
@@ -67,7 +66,7 @@
                     if (isset($_GET['f_model'], $_GET['f_brand']) && !empty($_GET['f_model'])) {
                         $modelo = mysqli_real_escape_string($con, $_GET['f_model']);
                         $id_marca = (int)$_GET['f_brand'];
-                        $sql = "INSERT INTO tb_modelos (str_nome_modelo_modelos, int_id_marca_modelos) VALUES (?, ?)";
+                        $sql = "INSERT INTO tb_modelos (str_nome_modelo_modelos, id_marca_modelos) VALUES (?, ?)";
                         $stmt = mysqli_prepare($con, $sql);
                         mysqli_stmt_bind_param($stmt, 'si', $modelo, $id_marca);
                         if (mysqli_stmt_execute($stmt)) {
@@ -81,7 +80,7 @@
                 elseif ($codigo == 3) {
                     if (isset($_GET['delete_brands_options'])) {
                         $id_marca = (int)$_GET['delete_brands_options'];
-                        $sql = "DELETE FROM tb_marcas WHERE int_id_marca_marcas = ?";
+                        $sql = "DELETE FROM tb_marcas WHERE id_marca_marcas = ?";
                         $stmt = mysqli_prepare($con, $sql);
                         mysqli_stmt_bind_param($stmt, 'i', $id_marca);
                         if (mysqli_stmt_execute($stmt)) {
@@ -95,7 +94,7 @@
                 elseif ($codigo == 4) {
                     if (isset($_GET['delete_model_options'])) {
                         $id_modelo = (int)$_GET['delete_model_options'];
-                        $sql = "DELETE FROM tb_modelos WHERE int_id_modelo_modelos = ?";
+                        $sql = "DELETE FROM tb_modelos WHERE id_modelo_modelos = ?";
                         $stmt = mysqli_prepare($con, $sql);
                         mysqli_stmt_bind_param($stmt, 'i', $id_modelo);
                         if (mysqli_stmt_execute($stmt)) {
@@ -135,7 +134,7 @@
                             $sql = "SELECT * FROM tb_marcas";
                             $col = mysqli_query($con, $sql);
                             while ($exibe = mysqli_fetch_array($col)) {
-                                echo "<option value='".$exibe['int_id_marca_marcas']."'>".$exibe['str_nome_marca_marcas']."</option>";
+                                echo "<option value='".$exibe['id_marca_marcas']."'>".$exibe['str_nome_marca_marcas']."</option>";
                             }
                         ?>
                     </select>
@@ -160,7 +159,7 @@
                             $sql = "SELECT * FROM tb_marcas";
                             $col = mysqli_query($con, $sql);
                             while ($exibe = mysqli_fetch_array($col)) {
-                                echo "<option value='".$exibe['int_id_marca_marcas']."'>".$exibe['str_nome_marca_marcas']."</option>";
+                                echo "<option value='".$exibe['id_marca_marcas']."'>".$exibe['str_nome_marca_marcas']."</option>";
                             }
                         ?>
                     </select>
@@ -170,17 +169,19 @@
             </div>
 
             <!-- Formulário para Deletar um modelo -->
-            <div class="f_deletar_modelo" id="f_deletar_modelo"></div>
+            <div class="f_deletar_modelo" id="f_deletar_modelo">
                 <form action="marcas-modelos.php" method="get" name="form_delete_model" class="deletar">
                     <input type="hidden" name="num" value="<?php echo $n1; ?>">
                     <input type="hidden" name="codigo" value="4">
                     <label>Selecione um modelo</label>
                     <select name="delete_model_options" size="10" required="required">
                         <?php
-                            $sql = "SELECT * FROM tb_modelos";
+                            $sql = "SELECT tb_modelos.id_modelo_modelos, tb_modelos.str_nome_modelo_modelos, tb_marcas.str_nome_marca_marcas 
+                                    FROM tb_modelos 
+                                    JOIN tb_marcas ON tb_modelos.id_marca_modelos = tb_marcas.id_marca_marcas";
                             $col = mysqli_query($con, $sql);
                             while ($exibe = mysqli_fetch_array($col)) {
-                                echo "<option value='".$exibe['int_id_modelo_modelos']."'>".$exibe['str_nome_modelo_modelos']."</option>";
+                                echo "<option value='".$exibe['id_modelo_modelos']."'>".$exibe['str_nome_modelo_modelos']." - ".$exibe['str_nome_marca_marcas']."</option>";
                             }
                         ?>
                     </select>
